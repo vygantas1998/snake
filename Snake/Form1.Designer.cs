@@ -116,7 +116,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(176, 20);
             this.textBox1.TabIndex = 8;
-            this.textBox1.Text = "192.168.56.1";
+            this.textBox1.Text = "87.247.122.54";
             // 
             // richTextBox1
             // 

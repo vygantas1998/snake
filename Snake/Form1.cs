@@ -93,7 +93,6 @@ namespace Snake
             button2.Visible = false;
             textBox1.Visible = false;
             textBox2.Visible = false;
-            lblScore.Text = map.Scores[map.snakeId].Points.ToString();
         }
         private void UpdateScreen(object sender, EventArgs e)
         {

@@ -82,7 +82,7 @@ namespace Snake
         public void addScore(int snake, int points, Label lblScore)
         {
             Scores[snake].Points += points;
-            lblScore.Text = Scores[snake].Points.ToString();
+            lblScore.Text = Scores[snakeId].Points.ToString();
         }
         public void checkForFood(PictureBox pbCanvas, Label lblScore)
         {

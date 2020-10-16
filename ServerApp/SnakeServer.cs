@@ -61,7 +61,7 @@ namespace ServerApp
     class SnakeServer
     {
         List<Socket> clients = new List<Socket>();
-        IPAddress ipAddr = Array.FindAll(Dns.GetHostEntry(string.Empty).AddressList, a => a.AddressFamily == AddressFamily.InterNetwork)[0];
+        IPAddress[] allIps = Array.FindAll(Dns.GetHostEntry(string.Empty).AddressList, a => a.AddressFamily == AddressFamily.InterNetwork);
         int Port = 3000;
         Socket listener = new Socket(AddressFamily.InterNetwork,
                 SocketType.Stream, ProtocolType.Tcp);
@@ -78,6 +78,7 @@ namespace ServerApp
 
         public void ExecuteServer()
         {
+            IPAddress ipAddr = allIps[3];
             IPEndPoint localEndPoint = new IPEndPoint(ipAddr, Port);
             Socket listener = new Socket(ipAddr.AddressFamily,
                          SocketType.Stream, ProtocolType.Tcp);

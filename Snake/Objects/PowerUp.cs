@@ -13,12 +13,6 @@ namespace Snake.Objects
         public int Points { get; set; }
         public Brush Color { get; set; }
         public PowerUp() { }
-        public void Draw(Graphics canvas, Map map)
-        {
-            canvas.FillEllipse(Color,
-                       new Rectangle(X * map.Width,
-                            Y * map.Height, map.Width, map.Height));
-        }
         public abstract void Eat(SnakeBody snake);
     }
 }

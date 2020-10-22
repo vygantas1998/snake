@@ -23,9 +23,7 @@ namespace Snake
         public int Height { get; set; }
         public Level Level { get; set; }
         public bool gameStarted = false;
-        public Form1 form { get; set; }
         public bool isServer { get; set; }
-        public ClientSocket client { get; set; }
 
         private static Map instance = null;
         public static Map GetInstance
@@ -50,41 +48,22 @@ namespace Snake
             gameStarted = false;
             ClearMap();
         }
-        public void addSnake(int X, int Y, string headColor, string bodyColor, int speed)
+        public SnakeBody addSnake(int X, int Y, string headColor, string bodyColor, int speed)
         {
             Scores.Add(new Score(0, 0));
             SnakeBody body = new SnakeBody(X, Y, speed, Direction.Down, headColor, bodyColor);
-            client.AddSnake(body);
+            return body;
         }
-        public void drawSnakes(Graphics canvas)
-        {
-            foreach (SnakeBody snake in Snakes)
-            {
-                snake.Draw(canvas, this);
-            }
-        }
-        public void drawPowerUps(Graphics canvas)
-        {
-            foreach (PowerUp powerUp in PowerUps)
-            {
-                powerUp.Draw(canvas, this);
-            }
-        }
-        public void eatFood(int snake, PowerUp powerUp, Label lblScore)
+        public int eatFood(int snake, PowerUp powerUp)
         {
             powerUp.Eat(Snakes[snake]);
-            addScore(snake, powerUp.Points, lblScore);
-            if(snakeId == 0)
-            {
-                client.AddPowerUp();
-            }
+            return powerUp.Points;
         }
-        public void addScore(int snake, int points, Label lblScore)
+        public void addScore(int snake, int points)
         {
             Scores[snake].Points += points;
-            lblScore.Text = Scores[snakeId].Points.ToString();
         }
-        public void checkForFood(PictureBox pbCanvas, Label lblScore)
+        public int checkForFood()
         {
             int snkId = 0;
             foreach (SnakeBody snake in Snakes)
@@ -95,23 +74,23 @@ namespace Snake
                     //Detect collision with food piece
                     if (part.X == powerUp.X && part.Y == powerUp.Y)
                     {
-                        Eat(snkId, powerUp, pbCanvas, lblScore);
-                        break;
+                        return Eat(snkId, powerUp);
                     }
                 }
                 snkId++;
             }
+            return 0;
         }
-        private void Eat(int snake,PowerUp powerUp, PictureBox pbCanvas, Label lblScore)
+        private int Eat(int snake,PowerUp powerUp)
         {
             PowerUps.Remove(powerUp);
-            eatFood(snake, powerUp, lblScore);
+            return eatFood(snake, powerUp);
         }
-        public void MoveSnakes(PictureBox pbCanvas)
+        public void MoveSnakes()
         {
             foreach(SnakeBody snake in Snakes)
             {
-                snake.MoveSnake(pbCanvas, this);
+                snake.MoveSnake(this);
             }
         }
         public void addFood(int x, int y, bool isBuff, PowerUpType powerUpType)
@@ -119,10 +98,6 @@ namespace Snake
             AbstractPowerUpFactory powerUpFactory = PowerUpFactoryProducer.getFactory(isBuff);
             PowerUp sizePowerUp = powerUpFactory.getPowerUp(x, y, powerUpType);
             PowerUps.Add(sizePowerUp);
-        }
-        public void startGame()
-        {
-            form.gameStart();
         }
         
         public void changeSnakeDirection(int snakeId, Direction direction)
@@ -164,10 +139,9 @@ namespace Snake
                     return "";
             }
         }
-        public void StartGame(Label lblGameOver, PictureBox pbCanvas)
+        public void StartGame()
         {
             ClearMap();
-            lblGameOver.Visible = false;
         }
         public void ClearMap()
         {

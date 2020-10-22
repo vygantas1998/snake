@@ -29,14 +29,7 @@ namespace Snake.Objects
             HeadColor = headColor;
             BodyColor = bodyColor;
         }
-        public void Draw(Graphics canvas, Map map)
-        {
-            foreach (BodyPart part in BodyParts)
-            {
-                part.Draw(canvas, map);
-            }
-        }
-        public void updateDirection(ClientSocket client, int snakeId, Map map)
+        public Direction updateDirection(int snakeId, Map map)
         {
             Direction newDirection = Direction;
             if (Input.KeyPressed(Keys.Right) && Direction != Direction.Left)
@@ -47,12 +40,9 @@ namespace Snake.Objects
                 newDirection = Direction.Up;
             else if (Input.KeyPressed(Keys.Down) && Direction != Direction.Up)
                 newDirection = Direction.Down;
-            if(newDirection != Direction)
-            {
-                client.ChangeDirection(newDirection);
-            }
+            return newDirection;
         }
-        public void MoveSnake(PictureBox pbCanvas, Map map)
+        public void MoveSnake(Map map)
         {
             if (!isDead)
             {
@@ -79,8 +69,8 @@ namespace Snake.Objects
                         }
 
                         //Get maximum X and Y Pos
-                        int maxXPos = pbCanvas.Size.Width / map.Width;
-                        int maxYPos = pbCanvas.Size.Height / map.Height;
+                        int maxXPos = 1000 / map.Width;
+                        int maxYPos = 969 / map.Height;
 
                         //Detect collission with game borders.
                         if (part.X < 0 || part.Y < 0

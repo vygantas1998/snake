@@ -27,10 +27,10 @@ namespace Snake
 
         public Form1()
         {
-            map.form = this;
             InitializeComponent();
             //Start New game
-            map.StartGame(lblGameOver, pbCanvas);
+            map.StartGame();
+            lblGameOver.Visible = false;
             button1.Visible = false;
         }
         
@@ -42,8 +42,8 @@ namespace Snake
                 Graphics canvas = e.Graphics;
                 //if (!map.Snakes[map.snakeId].isDead)
                 //{
-                    map.drawSnakes(canvas);
-                    map.drawPowerUps(canvas);
+                    drawSnakes(canvas);
+                    drawPowerUps(canvas);
                 //}
                 //else
                 //{
@@ -96,11 +96,55 @@ namespace Snake
         }
         private void UpdateScreen(object sender, EventArgs e)
         {
-
-            map.Snakes[map.snakeId].updateDirection(client, map.snakeId, map);
-            map.MoveSnakes(pbCanvas);
-            map.checkForFood(pbCanvas, lblScore);
+            Direction direction = map.Snakes[map.snakeId].Direction;
+            Direction newDirection = map.Snakes[map.snakeId].updateDirection(map.snakeId, map);
+            if(direction != newDirection)
+            {
+                client.ChangeDirection(newDirection);
+            }
+            map.MoveSnakes();
+            int points = map.checkForFood();
+            if (points != 0)
+            {
+                map.addScore(map.snakeId, points);
+                lblScore.Text = map.Scores[map.snakeId].Points.ToString();
+                client.AddPowerUp();
+            }
             pbCanvas.Invalidate();
+        }
+
+        public void drawSnakes(Graphics canvas)
+        {
+            foreach (SnakeBody snake in map.Snakes)
+            {
+                foreach(BodyPart part in snake.BodyParts)
+                {
+                    DrawBodyPart(part, canvas, map);
+                }
+            }
+        }
+        public void drawPowerUps(Graphics canvas)
+        {
+            foreach (PowerUp powerUp in map.PowerUps)
+            {
+                DrawPowerUp(powerUp, canvas, map);
+            }
+        }
+
+        public void DrawBodyPart(BodyPart part,Graphics canvas, Map map)
+        {
+            canvas.FillEllipse(part.getColor(),
+                          new Rectangle(part.X * map.Width,
+                                         part.Y * map.Height,
+                                         map.Width, map.Height));
+        }
+
+        public void DrawPowerUp(PowerUp part, Graphics canvas, Map map)
+        {
+            canvas.FillEllipse(part.Color,
+                          new Rectangle(part.X * map.Width,
+                                         part.Y * map.Height,
+                                         map.Width, map.Height));
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -108,8 +152,8 @@ namespace Snake
             if (client == null)
             {
                 client = new ClientSocket(textBox1.Text, textBox2.Text, richTextBox1, this);
-                map.client = client;
-                map.addSnake(10, 10, "Black", "Green", 16);
+                //map.client = client;
+                client.AddSnake(map.addSnake(10, 10, "Black", "Green", 16));
                 button1.Visible = true;
             }
         }

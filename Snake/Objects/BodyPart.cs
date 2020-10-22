@@ -20,14 +20,6 @@ namespace Snake.Objects
             Color = color;
         }
 
-        public void Draw(Graphics canvas, Map map)
-        {
-            canvas.FillEllipse(getColor(),
-                          new Rectangle(X * map.Width,
-                                         Y * map.Height,
-                                         map.Width, map.Height));
-        }
-
         public Brush getColor()
         {
             switch (Color)

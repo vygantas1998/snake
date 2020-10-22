@@ -135,7 +135,7 @@ namespace Snake
             }
             else if (dataPairs.ContainsKey("gameStart"))
             {
-                map.startGame();
+                form.gameStart();
             } else if (dataPairs.ContainsKey("syncSnakes"))
             {
                 map.Snakes = System.Text.Json.JsonSerializer.Deserialize<List<SnakeBody>>(dataPairs["syncSnakes"].ToString());

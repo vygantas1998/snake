@@ -29,7 +29,7 @@ namespace Snake.Objects
             HeadColor = headColor;
             BodyColor = bodyColor;
         }
-        public Direction updateDirection(int snakeId, Map map)
+        public Direction updateDirection()
         {
             Direction newDirection = Direction;
             if (Input.KeyPressed(Keys.Right) && Direction != Direction.Left)
@@ -76,7 +76,7 @@ namespace Snake.Objects
                         if (part.X < 0 || part.Y < 0
                             || part.X >= maxXPos || part.Y >= maxYPos)
                         {
-                            Die();
+                            isDead = true;
                         }
 
                         //Detect collission with body
@@ -86,7 +86,7 @@ namespace Snake.Objects
                             if (part.X == otherPart.X &&
                                part.Y == otherPart.Y)
                             {
-                                Die();
+                                isDead = true;
                             }
                         }
                     }
@@ -99,10 +99,6 @@ namespace Snake.Objects
                     }
                 }
             }
-        }
-        public void Die()
-        {
-            isDead = true;
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Snake.Objects.PowerUps
 {
-    class SizeDown : Size
+    public class SizeDown : Size
     {
         public SizeDown(int x, int y)
         {

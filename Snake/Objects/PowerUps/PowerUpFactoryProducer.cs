@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Snake.Objects.PowerUps
 {
-    class PowerUpFactoryProducer
+   public class PowerUpFactoryProducer
     {
         public static AbstractPowerUpFactory getFactory(bool buff)
         {

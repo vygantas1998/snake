@@ -29,3 +29,34 @@ C:\Users\vygan\Desktop\snake1\Snake (1)\ServerApp\bin\Debug\Newtonsoft.Json.xml
 C:\Users\vygan\Desktop\snake1\Snake (1)\ServerApp\bin\Debug\Snake.exe
 C:\Users\vygan\Desktop\snake1\Snake (1)\ServerApp\bin\Debug\Snake.pdb
 C:\Users\vygan\Desktop\snake1\Snake (1)\ServerApp\bin\Debug\Snake.exe.config
+C:\Users\zyman\Desktop\New folder (11)\ServerApp\bin\Debug\ServerApp.exe.config
+C:\Users\zyman\Desktop\New folder (11)\ServerApp\bin\Debug\ServerApp.exe
+C:\Users\zyman\Desktop\New folder (11)\ServerApp\bin\Debug\ServerApp.pdb
+C:\Users\zyman\Desktop\New folder (11)\ServerApp\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\zyman\Desktop\New folder (11)\ServerApp\bin\Debug\Newtonsoft.Json.dll
+C:\Users\zyman\Desktop\New folder (11)\ServerApp\bin\Debug\Snake.exe
+C:\Users\zyman\Desktop\New folder (11)\ServerApp\bin\Debug\System.Buffers.dll
+C:\Users\zyman\Desktop\New folder (11)\ServerApp\bin\Debug\System.Memory.dll
+C:\Users\zyman\Desktop\New folder (11)\ServerApp\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\zyman\Desktop\New folder (11)\ServerApp\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\zyman\Desktop\New folder (11)\ServerApp\bin\Debug\System.Text.Encodings.Web.dll
+C:\Users\zyman\Desktop\New folder (11)\ServerApp\bin\Debug\System.Text.Json.dll
+C:\Users\zyman\Desktop\New folder (11)\ServerApp\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\zyman\Desktop\New folder (11)\ServerApp\bin\Debug\System.ValueTuple.dll
+C:\Users\zyman\Desktop\New folder (11)\ServerApp\bin\Debug\Snake.pdb
+C:\Users\zyman\Desktop\New folder (11)\ServerApp\bin\Debug\Snake.exe.config
+C:\Users\zyman\Desktop\New folder (11)\ServerApp\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\zyman\Desktop\New folder (11)\ServerApp\bin\Debug\Newtonsoft.Json.xml
+C:\Users\zyman\Desktop\New folder (11)\ServerApp\bin\Debug\System.Buffers.xml
+C:\Users\zyman\Desktop\New folder (11)\ServerApp\bin\Debug\System.Memory.xml
+C:\Users\zyman\Desktop\New folder (11)\ServerApp\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\zyman\Desktop\New folder (11)\ServerApp\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\zyman\Desktop\New folder (11)\ServerApp\bin\Debug\System.Text.Encodings.Web.xml
+C:\Users\zyman\Desktop\New folder (11)\ServerApp\bin\Debug\System.Text.Json.xml
+C:\Users\zyman\Desktop\New folder (11)\ServerApp\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\zyman\Desktop\New folder (11)\ServerApp\bin\Debug\System.ValueTuple.xml
+C:\Users\zyman\Desktop\New folder (11)\ServerApp\obj\Debug\ServerApp.csprojAssemblyReference.cache
+C:\Users\zyman\Desktop\New folder (11)\ServerApp\obj\Debug\ServerApp.csproj.CoreCompileInputs.cache
+C:\Users\zyman\Desktop\New folder (11)\ServerApp\obj\Debug\ServerApp.csproj.CopyComplete
+C:\Users\zyman\Desktop\New folder (11)\ServerApp\obj\Debug\ServerApp.exe
+C:\Users\zyman\Desktop\New folder (11)\ServerApp\obj\Debug\ServerApp.pdb

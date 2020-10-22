@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Snake.Objects.Levels
 {
-    class Hard: Level
+    public class Hard: Level
     {
         private readonly string _levelType;
 

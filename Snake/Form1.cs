@@ -29,7 +29,7 @@ namespace Snake
         {
             InitializeComponent();
             //Start New game
-            map.StartGame();
+            map.ClearMap();
             lblGameOver.Visible = false;
             button1.Visible = false;
         }
@@ -97,7 +97,7 @@ namespace Snake
         private void UpdateScreen(object sender, EventArgs e)
         {
             Direction direction = map.Snakes[map.snakeId].Direction;
-            Direction newDirection = map.Snakes[map.snakeId].updateDirection(map.snakeId, map);
+            Direction newDirection = map.Snakes[map.snakeId].updateDirection();
             if(direction != newDirection)
             {
                 client.ChangeDirection(newDirection);

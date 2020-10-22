@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Snake.Objects.PowerUps
 {
-    class BuffFactory : AbstractPowerUpFactory
+    public class BuffFactory : AbstractPowerUpFactory
     {
         public override PowerUp getPowerUp(int x, int y, PowerUpType powerUpType)
         {

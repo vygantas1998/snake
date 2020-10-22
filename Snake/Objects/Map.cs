@@ -139,10 +139,6 @@ namespace Snake
                     return "";
             }
         }
-        public void StartGame()
-        {
-            ClearMap();
-        }
         public void ClearMap()
         {
             Obstacles.Clear();

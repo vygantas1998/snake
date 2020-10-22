@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Snake.Objects.PowerUps
 {
-    class SpeedDown: Speed
+   public class SpeedDown: Speed
     {
         public SpeedDown(int x, int y)
         {

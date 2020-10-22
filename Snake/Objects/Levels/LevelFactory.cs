@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Snake.Objects.Levels
 {
-     class LevelFactory
+     public class LevelFactory
     {
         public static Level CreateLevel(string level="")
         {

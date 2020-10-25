@@ -40,8 +40,8 @@ namespace Snake
         {
             Obstacles = new List<Obstacle>();
             PowerUps = new List<PowerUp>();
-            Width = 16;
-            Height = 16;
+            Width = 1000;
+            Height = 969;
             Level = LevelFactory.CreateLevel();
             Snakes = new List<SnakeBody>();
             Scores = new List<Score>();

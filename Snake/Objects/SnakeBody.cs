@@ -29,19 +29,6 @@ namespace Snake.Objects
             HeadColor = headColor;
             BodyColor = bodyColor;
         }
-        public Direction updateDirection()
-        {
-            Direction newDirection = Direction;
-            if (Input.KeyPressed(Keys.Right) && Direction != Direction.Left)
-                newDirection = Direction.Right;
-            else if (Input.KeyPressed(Keys.Left) && Direction != Direction.Right)
-                newDirection = Direction.Left;
-            else if (Input.KeyPressed(Keys.Up) && Direction != Direction.Down)
-                newDirection = Direction.Up;
-            else if (Input.KeyPressed(Keys.Down) && Direction != Direction.Up)
-                newDirection = Direction.Down;
-            return newDirection;
-        }
         public void MoveSnake(Map map)
         {
             if (!isDead)
@@ -67,28 +54,7 @@ namespace Snake.Objects
                                 part.Y++;
                                 break;
                         }
-
-                        //Get maximum X and Y Pos
-                        int maxXPos = 1000 / map.Width;
-                        int maxYPos = 969 / map.Height;
-
-                        //Detect collission with game borders.
-                        if (part.X < 0 || part.Y < 0
-                            || part.X >= maxXPos || part.Y >= maxYPos)
-                        {
-                            isDead = true;
-                        }
-
-                        //Detect collission with body
-                        for (int j = 1; j < BodyParts.Count; j++)
-                        {
-                            BodyPart otherPart = BodyParts[j];
-                            if (part.X == otherPart.X &&
-                               part.Y == otherPart.Y)
-                            {
-                                isDead = true;
-                            }
-                        }
+                        CheckForDeath(part, map);
                     }
                     else
                     {
@@ -97,6 +63,29 @@ namespace Snake.Objects
                             .X = BodyParts[i - 1].X;
                         part.Y = BodyParts[i - 1].Y;
                     }
+                }
+            }
+        }
+        public void CheckForDeath(BodyPart part, Map map)
+        {
+            //Get maximum X and Y Pos
+            int maxXPos = map.Width / 16;
+            int maxYPos = map.Height / 16;
+            //Detect collission with game borders.
+            if (part.X < 0 || part.Y < 0
+                || part.X >= maxXPos || part.Y >= maxYPos)
+            {
+                isDead = true;
+            }
+
+            //Detect collission with body
+            for (int j = 1; j < BodyParts.Count; j++)
+            {
+                BodyPart otherPart = BodyParts[j];
+                if (part.X == otherPart.X &&
+                   part.Y == otherPart.Y)
+                {
+                    isDead = true;
                 }
             }
         }

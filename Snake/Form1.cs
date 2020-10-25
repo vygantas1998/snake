@@ -1,12 +1,6 @@
-﻿using Newtonsoft.Json.Linq;
-using ServerApp.Objects;
-using Snake.Objects;
-using Snake.Objects.PowerUps;
+﻿using Snake.Objects;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Text.Json;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace Snake
@@ -28,29 +22,19 @@ namespace Snake
         public Form1()
         {
             InitializeComponent();
-            //Start New game
             map.ClearMap();
             lblGameOver.Visible = false;
             button1.Visible = false;
         }
-        
+
 
         private void pbCanvas_Paint(object sender, PaintEventArgs e)
         {
             if (map.gameStarted)
             {
                 Graphics canvas = e.Graphics;
-                //if (!map.Snakes[map.snakeId].isDead)
-                //{
-                    drawSnakes(canvas);
-                    drawPowerUps(canvas);
-                //}
-                //else
-                //{
-                //    string gameOver = "Game over \nYour final score is: " + map.Scores[map.snakeId].Points + "\nPress Enter to try again";
-                //    lblGameOver.Text = gameOver;
-                //    lblGameOver.Visible = true;
-                //}
+                drawSnakes(canvas);
+                drawPowerUps(canvas);
             }
         }
 
@@ -81,7 +65,7 @@ namespace Snake
             {
                 gameStartTest();
             }
-            
+
         }
         private void gameStartTest()
         {
@@ -94,11 +78,24 @@ namespace Snake
             textBox1.Visible = false;
             textBox2.Visible = false;
         }
+        public Direction updateDirection(Direction Direction)
+        {
+            Direction newDirection = Direction;
+            if (Input.KeyPressed(Keys.Right) && Direction != Direction.Left)
+                newDirection = Direction.Right;
+            else if (Input.KeyPressed(Keys.Left) && Direction != Direction.Right)
+                newDirection = Direction.Left;
+            else if (Input.KeyPressed(Keys.Up) && Direction != Direction.Down)
+                newDirection = Direction.Up;
+            else if (Input.KeyPressed(Keys.Down) && Direction != Direction.Up)
+                newDirection = Direction.Down;
+            return newDirection;
+        }
         private void UpdateScreen(object sender, EventArgs e)
         {
             Direction direction = map.Snakes[map.snakeId].Direction;
-            Direction newDirection = map.Snakes[map.snakeId].updateDirection();
-            if(direction != newDirection)
+            Direction newDirection = updateDirection(direction);
+            if (direction != newDirection)
             {
                 client.ChangeDirection(newDirection);
             }
@@ -107,8 +104,8 @@ namespace Snake
             if (points != 0)
             {
                 map.addScore(map.snakeId, points);
-                lblScore.Text = map.Scores[map.snakeId].Points.ToString();
                 client.AddPowerUp();
+                lblScore.Text = map.Scores[map.snakeId].Points.ToString();
             }
             pbCanvas.Invalidate();
         }
@@ -117,9 +114,9 @@ namespace Snake
         {
             foreach (SnakeBody snake in map.Snakes)
             {
-                foreach(BodyPart part in snake.BodyParts)
+                foreach (BodyPart part in snake.BodyParts)
                 {
-                    DrawBodyPart(part, canvas, map);
+                    DrawBodyPart(part, canvas);
                 }
             }
         }
@@ -127,24 +124,24 @@ namespace Snake
         {
             foreach (PowerUp powerUp in map.PowerUps)
             {
-                DrawPowerUp(powerUp, canvas, map);
+                DrawPowerUp(powerUp, canvas);
             }
         }
 
-        public void DrawBodyPart(BodyPart part,Graphics canvas, Map map)
+        public void DrawBodyPart(BodyPart part, Graphics canvas)
         {
             canvas.FillEllipse(part.getColor(),
-                          new Rectangle(part.X * map.Width,
-                                         part.Y * map.Height,
-                                         map.Width, map.Height));
+                          new Rectangle(part.X * 16,
+                                         part.Y * 16,
+                                         16, 16));
         }
 
-        public void DrawPowerUp(PowerUp part, Graphics canvas, Map map)
+        public void DrawPowerUp(PowerUp part, Graphics canvas)
         {
             canvas.FillEllipse(part.Color,
-                          new Rectangle(part.X * map.Width,
-                                         part.Y * map.Height,
-                                         map.Width, map.Height));
+                          new Rectangle(part.X * 16,
+                                         part.Y * 16,
+                                         16, 16));
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -152,7 +149,6 @@ namespace Snake
             if (client == null)
             {
                 client = new ClientSocket(textBox1.Text, textBox2.Text, richTextBox1, this);
-                //map.client = client;
                 client.AddSnake(map.addSnake(10, 10, "Black", "Green", 16));
                 button1.Visible = true;
             }

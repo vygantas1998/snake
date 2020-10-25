@@ -56,7 +56,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(1029, 25);
+            this.label1.Location = new System.Drawing.Point(1013, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(118, 37);
             this.label1.TabIndex = 1;
@@ -84,7 +84,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1036, 94);
+            this.button1.Location = new System.Drawing.Point(1019, 163);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 4;
@@ -102,9 +102,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(1036, 218);
+            this.button2.Location = new System.Drawing.Point(1019, 218);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(233, 23);
+            this.button2.Size = new System.Drawing.Size(250, 23);
             this.button2.TabIndex = 9;
             this.button2.Text = "Join server";
             this.button2.UseVisualStyleBackColor = true;
@@ -112,17 +112,18 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(1036, 192);
+            this.textBox1.Location = new System.Drawing.Point(1019, 192);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(176, 20);
+            this.textBox1.Size = new System.Drawing.Size(193, 20);
             this.textBox1.TabIndex = 8;
             this.textBox1.Text = "87.247.122.54";
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(1036, 247);
+            this.richTextBox1.Enabled = false;
+            this.richTextBox1.Location = new System.Drawing.Point(1019, 247);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(233, 271);
+            this.richTextBox1.Size = new System.Drawing.Size(250, 271);
             this.richTextBox1.TabIndex = 11;
             this.richTextBox1.Text = "";
             // 

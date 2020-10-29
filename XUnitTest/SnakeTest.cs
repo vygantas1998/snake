@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace XUnitTest
 {
-    public class UnitTest4
+    public class SnakeTest
     {
         [Fact]
         public void TestDead()

@@ -28,3 +28,4 @@ C:\Users\zyman\Desktop\New folder (11)\Snake\obj\x64\Debug\Snake.csproj.CoreComp
 C:\Users\zyman\Desktop\New folder (11)\Snake\obj\x64\Debug\Snake.csproj.CopyComplete
 C:\Users\zyman\Desktop\New folder (11)\Snake\obj\x64\Debug\Snake.exe
 C:\Users\zyman\Desktop\New folder (11)\Snake\obj\x64\Debug\Snake.pdb
+C:\Users\zyman\Desktop\New folder (11)\Snake\obj\x64\Debug\Snake.csprojAssemblyReference.cache

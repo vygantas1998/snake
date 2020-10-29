@@ -56,6 +56,14 @@ namespace Snake
         }
         public int eatFood(int snake, PowerUp powerUp)
         {
+            Random rnd = new Random();
+            if (rnd.Next(0, 100) > 95)
+            {
+                RarePowerUp rare = new RarePowerUp();
+                rare.SetComponent(powerUp);
+                rare.Eat(Snakes[snake]);
+                return powerUp.Points + 50;
+            }
             powerUp.Eat(Snakes[snake]);
             return powerUp.Points;
         }

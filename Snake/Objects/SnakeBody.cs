@@ -59,8 +59,7 @@ namespace Snake.Objects
                     else
                     {
                         //Move body
-                        part
-                            .X = BodyParts[i - 1].X;
+                        part.X = BodyParts[i - 1].X;
                         part.Y = BodyParts[i - 1].Y;
                     }
                 }

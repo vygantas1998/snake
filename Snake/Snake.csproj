@@ -107,11 +107,13 @@
     <Compile Include="Objects\Obstacle.cs" />
     <Compile Include="Objects\PowerUp.cs" />
     <Compile Include="Objects\PowerUps\AbstractPowerUpFactory.cs" />
+    <Compile Include="Objects\PowerUps\RarePowerUp.cs" />
     <Compile Include="Objects\PowerUps\PowerUpFactoryProducer.cs" />
     <Compile Include="Objects\PowerUps\BuffUpFactory.cs" />
     <Compile Include="Objects\PowerUps\Size.cs" />
     <Compile Include="Objects\PowerUps\SizeUp.cs" />
     <Compile Include="Objects\PowerUps\SizeDown.cs" />
+    <Compile Include="Objects\PowerUps\PowerUpDecorator.cs" />
     <Compile Include="Objects\PowerUps\Speed.cs" />
     <Compile Include="Objects\PowerUps\SpeedDown.cs" />
     <Compile Include="Objects\PowerUps\DeBuffFactory.cs" />

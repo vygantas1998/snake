@@ -6,12 +6,11 @@ using System.Text;
 
 namespace Snake.Objects.PowerUps
 {
-    public class Size : PowerUp
+    public abstract class Size : PowerUp
     {
         public Size()
         {
             Color = Brushes.Violet;
         }
-        public override void Eat(SnakeBody snake) { }
     }
 }

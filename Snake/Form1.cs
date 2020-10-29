@@ -24,9 +24,20 @@ namespace Snake
             InitializeComponent();
             map.ClearMap();
             lblGameOver.Visible = false;
-            button1.Visible = false;
+            ControlsAfterConnect(false);
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.Items.Add("Easy");
+            comboBox1.Items.Add("Medium");
+            comboBox1.Items.Add("Hard");
+            comboBox1.SelectedItem = "Easy";
         }
 
+        public void ControlsAfterConnect(bool show)
+        {
+            button1.Visible = show;
+            comboBox1.Visible = show;
+            label2.Visible = show;
+        }
 
         private void pbCanvas_Paint(object sender, PaintEventArgs e)
         {
@@ -50,7 +61,7 @@ namespace Snake
 
         private void button1_Click(object sender, EventArgs e)
         {
-            client.GameStart();
+            client.GameStart(comboBox1.SelectedItem.ToString());
             client.AddPowerUp();
         }
 
@@ -73,7 +84,7 @@ namespace Snake
             gameTimer.Interval = 1000 / 16;
             gameTimer.Tick += UpdateScreen;
             gameTimer.Start();
-            button1.Visible = false;
+            ControlsAfterConnect(false);
             button2.Visible = false;
             textBox1.Visible = false;
             textBox2.Visible = false;
@@ -101,11 +112,15 @@ namespace Snake
             }
             map.MoveSnakes();
             int points = map.checkForFood();
-            if (points != 0)
+            if (points != 0 && map.snakeId == 0)
             {
                 map.addScore(map.snakeId, points);
                 client.AddPowerUp();
                 lblScore.Text = map.Scores[map.snakeId].Points.ToString();
+            }
+            if(!lblGameOver.Visible && map.Snakes[map.snakeId].isDead)
+            {
+                lblGameOver.Visible = true;
             }
             pbCanvas.Invalidate();
         }
@@ -131,16 +146,16 @@ namespace Snake
         public void DrawBodyPart(BodyPart part, Graphics canvas)
         {
             canvas.FillEllipse(part.getColor(),
-                          new Rectangle(part.X * 16,
-                                         part.Y * 16,
+                          new Rectangle(part.X,
+                                         part.Y,
                                          16, 16));
         }
 
         public void DrawPowerUp(PowerUp part, Graphics canvas)
         {
             canvas.FillEllipse(part.Color,
-                          new Rectangle(part.X * 16,
-                                         part.Y * 16,
+                          new Rectangle(part.X,
+                                         part.Y,
                                          16, 16));
         }
 
@@ -150,7 +165,7 @@ namespace Snake
             {
                 client = new ClientSocket(textBox1.Text, textBox2.Text, richTextBox1, this);
                 client.AddSnake(map.addSnake(10, 10, "Black", "Green", 16));
-                button1.Visible = true;
+                ControlsAfterConnect(true);
             }
         }
     }

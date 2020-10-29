@@ -68,13 +68,16 @@ namespace Snake
             int snkId = 0;
             foreach (SnakeBody snake in Snakes)
             {
-                BodyPart part = snake.BodyParts[0];
-                foreach (PowerUp powerUp in PowerUps)
+                if (!snake.isDead)
                 {
-                    //Detect collision with food piece
-                    if (part.X == powerUp.X && part.Y == powerUp.Y)
+                    BodyPart part = snake.BodyParts[0];
+                    foreach (PowerUp powerUp in PowerUps)
                     {
-                        return Eat(snkId, powerUp);
+                        //Detect collision with food piece
+                        if (part.X - 16 < powerUp.X && part.X + 16 > powerUp.X && part.Y - 16 < powerUp.Y && part.Y + 16 > powerUp.Y)
+                        {
+                            return Eat(snkId, powerUp);
+                        }
                     }
                 }
                 snkId++;

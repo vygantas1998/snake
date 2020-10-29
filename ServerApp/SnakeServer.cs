@@ -1,5 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
+using Snake;
 using Snake.Objects;
+using Snake.Objects.Levels;
 using Snake.Objects.PowerUps;
 using System;
 using System.Collections.Generic;
@@ -15,34 +17,24 @@ namespace ServerApp
     public class MapObserver : IObserver<JObject>
     {
         Socket Client;
-        List<SnakeBody> Snakes;
-        List<PowerUp> PowerUps;
+        Map Map;
 
-        public MapObserver(Socket client, List<SnakeBody> snakes, List<PowerUp> powerUps)
+        public MapObserver(Socket client, Map map)
         {
             Client = client;
-            Snakes = snakes;
-            PowerUps = powerUps;
+            Map = map;
         }
         public void Update(JObject data)
         {
             if (data.ContainsKey("generatePowerUp"))
             {
-                PowerUp powerUp = PowerUps[PowerUps.Count - 1];
-
-                JObject powerUpObj = new JObject();
-                JObject addPowerUp = new JObject();
-                addPowerUp["x"] = powerUp.X;
-                addPowerUp["y"] = powerUp.Y;
-                addPowerUp["isBuff"] = (powerUp is SpeedUp || powerUp is SizeUp) ? true : false;
-                addPowerUp["powerUpType"] = powerUp is Snake.Objects.PowerUps.Size ? 0 : 1;
-                powerUpObj["powerUp"] = addPowerUp;
-                SendClientMessage(powerUpObj.ToString());
+                PowerUp powerUp = Map.PowerUps[Map.PowerUps.Count - 1];
+                SendClientMessage(powerUp.toJSON().ToString());
             }
             if (data.ContainsKey("addSnake"))
             {
                 JObject snak = new JObject();
-                snak["syncSnakes"] = JObject.Parse("{\"snakes\":" + JsonSerializer.Serialize(Snakes) + "}")["snakes"];
+                snak["syncSnakes"] = JObject.Parse("{\"snakes\":" + JsonSerializer.Serialize(Map.Snakes) + "}")["snakes"];
                 SendClientMessage(snak.ToString());
             } else
             {
@@ -51,12 +43,13 @@ namespace ServerApp
         }
         public void SendClientMessage(string msg)
         {
-            msg = msg.Replace("\n", "").Replace("\r", "");
+            msg = SnakeServer.RemoveLineSymbols(msg);
             NetworkStream ns = new NetworkStream(Client);
             StreamWriter sw = new StreamWriter(ns);
             sw.WriteLine(msg);
             sw.Flush();
         }
+        
     }
     class SnakeServer
     {
@@ -67,8 +60,7 @@ namespace ServerApp
                 SocketType.Stream, ProtocolType.Tcp);
         int snakeId = 0;
         List<Thread> threads = new List<Thread>();
-        List<SnakeBody> snakes = new List<SnakeBody>();
-        List<PowerUp> powerUps = new List<PowerUp>();
+        Map map = new Map();
 
         Observable<JObject> mapObservable = new Observable<JObject>();
 
@@ -100,7 +92,7 @@ namespace ServerApp
         public void WaitForMessage(Socket listener)
         {
             Socket clientSocket = listener.Accept();
-            MapObserver mapObserver = new MapObserver(clientSocket, snakes,powerUps);
+            MapObserver mapObserver = new MapObserver(clientSocket, map);
             mapObservable.Register(mapObserver);
 
             clients.Add(clientSocket);
@@ -128,12 +120,15 @@ namespace ServerApp
 
                     if (dataPairs.ContainsKey("generatePowerUp"))
                     {
-                        Random rnd = new Random();
-                        powerUps.Add(new SizeUp(rnd.Next(0, 1000/16), rnd.Next(0, 969 / 16)));
+                        map.PowerUps.Add(map.Level.generatePowerUp(map.Height, map.Width));
                     }
-                   if (dataPairs.ContainsKey("addSnake"))
+                    if (dataPairs.ContainsKey("addSnake"))
                     {
-                        snakes.Add(JsonSerializer.Deserialize<SnakeBody>(dataPairs["addSnake"].ToString()));
+                        map.Snakes.Add(JsonSerializer.Deserialize<SnakeBody>(dataPairs["addSnake"].ToString()));
+                    }
+                    if (dataPairs.ContainsKey("gameStart"))
+                    {
+                        map.Level = LevelFactory.CreateLevel(dataPairs["level"].ToString());
                     }
                     ProcessData(dataPairs);
                 }
@@ -148,22 +143,17 @@ namespace ServerApp
         {
             mapObservable.Subject = dataPairs;
         }
-        public void ShutDownServer()
-        {
-            foreach (Socket client in clients)
-            {
-                client.Shutdown(SocketShutdown.Both);
-                client.Close();
-            }
-            listener.Close();
-        }
         public void SendClientMessage(Socket clientSocket, string msg)
         {
-            msg = msg.Replace("\n", "").Replace("\r", "");
+            msg = RemoveLineSymbols(msg);
             NetworkStream ns = new NetworkStream(clientSocket);
             StreamWriter sw = new StreamWriter(ns);
             sw.WriteLine(msg);
             sw.Flush();
+        }
+        public static string RemoveLineSymbols(string str)
+        {
+            return str.Replace("\n", "").Replace("\r", "");
         }
     }
 }

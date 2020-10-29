@@ -155,30 +155,18 @@ namespace Snake
             changeDirection["snakeId"] = map.snakeId;
             SendMessage(changeDirection.ToString());
         }
-        public void GameStart()
+        public void GameStart(string level)
         {
             JObject gameStart = new JObject();
             gameStart["gameStart"] = true;
+            gameStart["level"] = level;
             SendMessage(gameStart.ToString());
         }
         public void AddPowerUp()
         {
-            int maxXPos = map.Width / 16;
-            int maxYPos = map.Height / 16;
-
-            Random random = new Random();
-            int x = random.Next(0, maxXPos);
-            int y = random.Next(0, maxYPos);
-            PowerUp powerUp = new SizeUp(x, y);
-
-            JObject powerUpObj = new JObject();
-            JObject addPowerUp = new JObject();
-            addPowerUp["x"] = powerUp.X;
-            addPowerUp["y"] = powerUp.Y;
-            addPowerUp["isBuff"] = (powerUp is SpeedUp || powerUp is SizeUp) ? true : false;
-            addPowerUp["powerUpType"] = powerUp is Objects.PowerUps.Size ? 0 : 1;
-            powerUpObj["powerUp"] = addPowerUp;
-            SendMessage(powerUpObj.ToString());
+            JObject generatePowerUp = new JObject();
+            generatePowerUp["generatePowerUp"] = true;
+            SendMessage(generatePowerUp.ToString());
         }
     }
 }

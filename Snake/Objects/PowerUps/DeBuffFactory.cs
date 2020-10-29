@@ -14,7 +14,7 @@ namespace Snake.Objects.PowerUps
                 case PowerUpType.Size:
                     return new SizeDown(x, y);
                 case PowerUpType.Speed:
-                    return new SpeedDown(x, y);
+                    return new SpeedUp(x, y);
                 default:
                     return null;
             }

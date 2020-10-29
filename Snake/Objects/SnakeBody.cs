@@ -42,16 +42,16 @@ namespace Snake.Objects
                         switch (Direction)
                         {
                             case Direction.Right:
-                                part.X++;
+                                part.X += Speed;
                                 break;
                             case Direction.Left:
-                                part.X--;
+                                part.X -= Speed;
                                 break;
                             case Direction.Up:
-                                part.Y--;
+                                part.Y -= Speed;
                                 break;
                             case Direction.Down:
-                                part.Y++;
+                                part.Y += Speed;
                                 break;
                         }
                         CheckForDeath(part, map);
@@ -69,8 +69,8 @@ namespace Snake.Objects
         public void CheckForDeath(BodyPart part, Map map)
         {
             //Get maximum X and Y Pos
-            int maxXPos = map.Width / 16;
-            int maxYPos = map.Height / 16;
+            int maxXPos = map.Width;
+            int maxYPos = map.Height;
             //Detect collission with game borders.
             if (part.X < 0 || part.Y < 0
                 || part.X >= maxXPos || part.Y >= maxYPos)

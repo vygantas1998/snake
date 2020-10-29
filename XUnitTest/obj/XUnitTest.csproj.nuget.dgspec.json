@@ -1,19 +1,19 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\zyman\\Desktop\\New folder (11)\\XUnitTest\\XUnitTest.csproj": {}
+    "C:\\Users\\vygan\\Desktop\\snake1\\Snake (1)\\XUnitTest\\XUnitTest.csproj": {}
   },
   "projects": {
-    "C:\\Users\\zyman\\Desktop\\New folder (11)\\ServerApp\\ServerApp.csproj": {
+    "C:\\Users\\vygan\\Desktop\\snake1\\Snake (1)\\ServerApp\\ServerApp.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\zyman\\Desktop\\New folder (11)\\ServerApp\\ServerApp.csproj",
+        "projectUniqueName": "C:\\Users\\vygan\\Desktop\\snake1\\Snake (1)\\ServerApp\\ServerApp.csproj",
         "projectName": "ServerApp",
-        "projectPath": "C:\\Users\\zyman\\Desktop\\New folder (11)\\ServerApp\\ServerApp.csproj",
+        "projectPath": "C:\\Users\\vygan\\Desktop\\snake1\\Snake (1)\\ServerApp\\ServerApp.csproj",
         "frameworks": {
           "net472": {
             "projectReferences": {
-              "C:\\Users\\zyman\\Desktop\\New folder (11)\\Snake\\Snake.csproj": {
-                "projectPath": "C:\\Users\\zyman\\Desktop\\New folder (11)\\Snake\\Snake.csproj"
+              "C:\\Users\\vygan\\Desktop\\snake1\\Snake (1)\\Snake\\Snake.csproj": {
+                "projectPath": "C:\\Users\\vygan\\Desktop\\snake1\\Snake (1)\\Snake\\Snake.csproj"
               }
             }
           }
@@ -23,27 +23,30 @@
         "net472": {}
       }
     },
-    "C:\\Users\\zyman\\Desktop\\New folder (11)\\Snake\\Snake.csproj": {
+    "C:\\Users\\vygan\\Desktop\\snake1\\Snake (1)\\Snake\\Snake.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\zyman\\Desktop\\New folder (11)\\Snake\\Snake.csproj",
+        "projectUniqueName": "C:\\Users\\vygan\\Desktop\\snake1\\Snake (1)\\Snake\\Snake.csproj",
         "projectName": "Snake",
-        "projectPath": "C:\\Users\\zyman\\Desktop\\New folder (11)\\Snake\\Snake.csproj"
+        "projectPath": "C:\\Users\\vygan\\Desktop\\snake1\\Snake (1)\\Snake\\Snake.csproj"
       },
       "frameworks": {
         "net472": {}
       }
     },
-    "C:\\Users\\zyman\\Desktop\\New folder (11)\\XUnitTest\\XUnitTest.csproj": {
+    "C:\\Users\\vygan\\Desktop\\snake1\\Snake (1)\\XUnitTest\\XUnitTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\zyman\\Desktop\\New folder (11)\\XUnitTest\\XUnitTest.csproj",
+        "projectUniqueName": "C:\\Users\\vygan\\Desktop\\snake1\\Snake (1)\\XUnitTest\\XUnitTest.csproj",
         "projectName": "XUnitTest",
-        "projectPath": "C:\\Users\\zyman\\Desktop\\New folder (11)\\XUnitTest\\XUnitTest.csproj",
-        "packagesPath": "C:\\Users\\zyman\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\zyman\\Desktop\\New folder (11)\\XUnitTest\\obj\\",
+        "projectPath": "C:\\Users\\vygan\\Desktop\\snake1\\Snake (1)\\XUnitTest\\XUnitTest.csproj",
+        "packagesPath": "C:\\Users\\vygan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\vygan\\Desktop\\snake1\\Snake (1)\\XUnitTest\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\zyman\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\vygan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -56,11 +59,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\zyman\\Desktop\\New folder (11)\\ServerApp\\ServerApp.csproj": {
-                "projectPath": "C:\\Users\\zyman\\Desktop\\New folder (11)\\ServerApp\\ServerApp.csproj"
+              "C:\\Users\\vygan\\Desktop\\snake1\\Snake (1)\\ServerApp\\ServerApp.csproj": {
+                "projectPath": "C:\\Users\\vygan\\Desktop\\snake1\\Snake (1)\\ServerApp\\ServerApp.csproj"
               },
-              "C:\\Users\\zyman\\Desktop\\New folder (11)\\Snake\\Snake.csproj": {
-                "projectPath": "C:\\Users\\zyman\\Desktop\\New folder (11)\\Snake\\Snake.csproj"
+              "C:\\Users\\vygan\\Desktop\\snake1\\Snake (1)\\Snake\\Snake.csproj": {
+                "projectPath": "C:\\Users\\vygan\\Desktop\\snake1\\Snake (1)\\Snake\\Snake.csproj"
               }
             }
           }
@@ -74,10 +77,6 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
-            "MiNET": {
-              "target": "Package",
-              "version": "[1.0.2159, )"
-            },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[16.5.0, )"
@@ -113,12 +112,18 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.2, 3.1.2]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -8,5 +8,6 @@ namespace Snake.Objects.Levels
     public abstract class Level
     {
         public abstract string levelType { get; }
+        public abstract PowerUp generatePowerUp(int mapHeight, int mapWidth);
     }
 }

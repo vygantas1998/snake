@@ -7,7 +7,7 @@ using System.Net.WebSockets;
 
 namespace XUnitTest
 {
-    public class UnitTest3
+    public class DirectionTests
     {
         [Fact]
         public void TestDirectionDown()

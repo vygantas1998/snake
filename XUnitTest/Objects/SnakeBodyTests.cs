@@ -63,5 +63,27 @@ namespace XUnitTest.Objects
             this.mockRepository.VerifyAll();
         }
 
+        [Fact]
+        public void MoveSnake_UpdateDirectionr()
+        {
+            // Arrange
+            var snakeBody = this.CreateSnakeBody();
+            Direction newDirection = snakeBody.Direction;
+
+            
+            try
+            {
+
+                var x = snakeBody.updateDirection();
+                Assert.True(false);
+            }
+            catch
+            {
+
+                Assert.True(true);
+            }
+            this.mockRepository.VerifyAll();
+        }
+
     }
 }

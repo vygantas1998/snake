@@ -6,7 +6,7 @@ using Xunit;
 
 namespace XUnitTest
 {
-    public class UnitTest2
+    public class FactoryTests
     {
         [Fact]
         public void TestSizeUp()

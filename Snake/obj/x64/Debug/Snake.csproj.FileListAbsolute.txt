@@ -28,6 +28,9 @@ C:\Users\zyman\Desktop\New folder (11)\Snake\obj\x64\Debug\Snake.csproj.CoreComp
 C:\Users\zyman\Desktop\New folder (11)\Snake\obj\x64\Debug\Snake.csproj.CopyComplete
 C:\Users\zyman\Desktop\New folder (11)\Snake\obj\x64\Debug\Snake.exe
 C:\Users\zyman\Desktop\New folder (11)\Snake\obj\x64\Debug\Snake.pdb
+<<<<<<< HEAD
+C:\Users\zyman\Desktop\New folder (11)\Snake\obj\x64\Debug\Snake.csprojAssemblyReference.cache
+=======
 C:\Users\vygan\Desktop\snake1\Snake (1)\Snake\bin\x64\Debug\Snake.exe.config
 C:\Users\vygan\Desktop\snake1\Snake (1)\Snake\bin\x64\Debug\Snake.exe
 C:\Users\vygan\Desktop\snake1\Snake (1)\Snake\bin\x64\Debug\Snake.pdb
@@ -59,3 +62,4 @@ C:\Users\vygan\Desktop\snake1\Snake (1)\Snake\obj\x64\Debug\Snake.csproj.CoreCom
 C:\Users\vygan\Desktop\snake1\Snake (1)\Snake\obj\x64\Debug\Snake.csproj.CopyComplete
 C:\Users\vygan\Desktop\snake1\Snake (1)\Snake\obj\x64\Debug\Snake.exe
 C:\Users\vygan\Desktop\snake1\Snake (1)\Snake\obj\x64\Debug\Snake.pdb
+>>>>>>> 47a5d33c219f00b9ab8fed2e74a459613b450a7c

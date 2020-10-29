@@ -4,7 +4,7 @@ using Snake.Objects.Levels;
 
 namespace XUnitTest
 {
-    public class UnitTest1
+    public class LevelTests
     {
         [Fact]
         public void TestEasy()

@@ -5,7 +5,6 @@ using Xunit;
 using System.Windows.Forms;
 using Snake;
 using System.Drawing;
-using MiNET.Plugins;
 
 namespace XUnitTest.Objects
 {

@@ -11,6 +11,11 @@ namespace Snake.Objects.PowerUps
         {
             X = x;
             Y = y;
+            Points = 100;
+        }
+        public override void Eat(SnakeBody snake)
+        {
+            snake.Speed += 8;
         }
     }
 }

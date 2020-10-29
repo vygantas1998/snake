@@ -1,17 +1,12 @@
 ﻿// A C# program for Client 
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using ServerApp.Objects;
 using Snake.Objects;
 using Snake.Objects.PowerUps;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
-using System.Text.Json;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -125,9 +120,9 @@ namespace Snake
             else if (dataPairs.ContainsKey("powerUp"))
             {
                 map.addFood(int.Parse(dataPairs["powerUp"]["x"].ToString()), 
-                    int.Parse(dataPairs["powerUp"]["y"].ToString()), 
-                    bool.Parse(dataPairs["powerUp"]["isBuff"].ToString()), 
-                    (Objects.PowerUps.PowerUpType)int.Parse(dataPairs["powerUp"]["powerUpType"].ToString()));
+                int.Parse(dataPairs["powerUp"]["y"].ToString()), 
+                bool.Parse(dataPairs["powerUp"]["isBuff"].ToString()), 
+                (Objects.PowerUps.PowerUpType)int.Parse(dataPairs["powerUp"]["powerUpType"].ToString()));
             }
             else if (dataPairs.ContainsKey("message"))
             {
@@ -160,30 +155,18 @@ namespace Snake
             changeDirection["snakeId"] = map.snakeId;
             SendMessage(changeDirection.ToString());
         }
-        public void GameStart()
+        public void GameStart(string level)
         {
             JObject gameStart = new JObject();
             gameStart["gameStart"] = true;
+            gameStart["level"] = level;
             SendMessage(gameStart.ToString());
         }
         public void AddPowerUp()
         {
-            int maxXPos = 1000 / map.Width;
-            int maxYPos = 969 / map.Height;
-
-            Random random = new Random();
-            int x = random.Next(0, maxXPos);
-            int y = random.Next(0, maxYPos);
-            PowerUp powerUp = new SizeUp(x, y);
-
-            JObject powerUpObj = new JObject();
-            JObject addPowerUp = new JObject();
-            addPowerUp["x"] = powerUp.X;
-            addPowerUp["y"] = powerUp.Y;
-            addPowerUp["isBuff"] = (powerUp is SpeedUp || powerUp is SizeUp) ? true : false;
-            addPowerUp["powerUpType"] = powerUp is Objects.PowerUps.Size ? 0 : 1;
-            powerUpObj["powerUp"] = addPowerUp;
-            SendMessage(powerUpObj.ToString());
+            JObject generatePowerUp = new JObject();
+            generatePowerUp["generatePowerUp"] = true;
+            SendMessage(generatePowerUp.ToString());
         }
     }
 }

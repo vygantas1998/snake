@@ -1,9 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
-using ServerApp.Objects;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Text.Json;
-using System.Windows.Forms;
+﻿using System.Collections.Generic;
 
 namespace Snake.Objects
 {
@@ -58,9 +53,8 @@ namespace Snake.Objects
                     }
                     else
                     {
-                        //Move body
-                        part.X = BodyParts[i - 1].X;
-                        part.Y = BodyParts[i - 1].Y;
+                        part.X = BodyParts[i - 1].X + (Direction == Direction.Right ? -1 * (16 - Speed) : (Direction == Direction.Left ? (16 - Speed) : 0));
+                        part.Y = BodyParts[i - 1].Y + (Direction == Direction.Up ? (16 - Speed) : (Direction == Direction.Down ? -1 * (16 - Speed) : 0));
                     }
                 }
             }

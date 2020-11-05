@@ -64,6 +64,20 @@ namespace Snake
                 rare.Eat(Snakes[snake]);
                 return powerUp.Points + 50;
             }
+            if (rnd.Next(0, 100) > 95)
+            {
+                ColorPowerUp color = new ColorPowerUp();
+                color.SetComponent(powerUp);
+                color.Eat(Snakes[snake]);
+                return powerUp.Points + 50;
+            }
+            if (rnd.Next(0, 100) > 95)
+            {
+                LenghtPowerUp len = new LenghtPowerUp();
+                len.SetComponent(powerUp);
+                len.Eat(Snakes[snake]);
+                return powerUp.Points + 50;
+            }
             powerUp.Eat(Snakes[snake]);
             return powerUp.Points;
         }

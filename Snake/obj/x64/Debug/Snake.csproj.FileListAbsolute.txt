@@ -28,38 +28,4 @@ C:\Users\zyman\Desktop\New folder (11)\Snake\obj\x64\Debug\Snake.csproj.CoreComp
 C:\Users\zyman\Desktop\New folder (11)\Snake\obj\x64\Debug\Snake.csproj.CopyComplete
 C:\Users\zyman\Desktop\New folder (11)\Snake\obj\x64\Debug\Snake.exe
 C:\Users\zyman\Desktop\New folder (11)\Snake\obj\x64\Debug\Snake.pdb
-<<<<<<< HEAD
 C:\Users\zyman\Desktop\New folder (11)\Snake\obj\x64\Debug\Snake.csprojAssemblyReference.cache
-=======
-C:\Users\vygan\Desktop\snake1\Snake (1)\Snake\bin\x64\Debug\Snake.exe.config
-C:\Users\vygan\Desktop\snake1\Snake (1)\Snake\bin\x64\Debug\Snake.exe
-C:\Users\vygan\Desktop\snake1\Snake (1)\Snake\bin\x64\Debug\Snake.pdb
-C:\Users\vygan\Desktop\snake1\Snake (1)\Snake\bin\x64\Debug\Microsoft.Bcl.AsyncInterfaces.dll
-C:\Users\vygan\Desktop\snake1\Snake (1)\Snake\bin\x64\Debug\Newtonsoft.Json.dll
-C:\Users\vygan\Desktop\snake1\Snake (1)\Snake\bin\x64\Debug\System.Buffers.dll
-C:\Users\vygan\Desktop\snake1\Snake (1)\Snake\bin\x64\Debug\System.Memory.dll
-C:\Users\vygan\Desktop\snake1\Snake (1)\Snake\bin\x64\Debug\System.Numerics.Vectors.dll
-C:\Users\vygan\Desktop\snake1\Snake (1)\Snake\bin\x64\Debug\System.Runtime.CompilerServices.Unsafe.dll
-C:\Users\vygan\Desktop\snake1\Snake (1)\Snake\bin\x64\Debug\System.Text.Encodings.Web.dll
-C:\Users\vygan\Desktop\snake1\Snake (1)\Snake\bin\x64\Debug\System.Text.Json.dll
-C:\Users\vygan\Desktop\snake1\Snake (1)\Snake\bin\x64\Debug\System.Threading.Tasks.Extensions.dll
-C:\Users\vygan\Desktop\snake1\Snake (1)\Snake\bin\x64\Debug\System.ValueTuple.dll
-C:\Users\vygan\Desktop\snake1\Snake (1)\Snake\bin\x64\Debug\Microsoft.Bcl.AsyncInterfaces.xml
-C:\Users\vygan\Desktop\snake1\Snake (1)\Snake\bin\x64\Debug\Newtonsoft.Json.xml
-C:\Users\vygan\Desktop\snake1\Snake (1)\Snake\bin\x64\Debug\System.Buffers.xml
-C:\Users\vygan\Desktop\snake1\Snake (1)\Snake\bin\x64\Debug\System.Memory.xml
-C:\Users\vygan\Desktop\snake1\Snake (1)\Snake\bin\x64\Debug\System.Numerics.Vectors.xml
-C:\Users\vygan\Desktop\snake1\Snake (1)\Snake\bin\x64\Debug\System.Runtime.CompilerServices.Unsafe.xml
-C:\Users\vygan\Desktop\snake1\Snake (1)\Snake\bin\x64\Debug\System.Text.Encodings.Web.xml
-C:\Users\vygan\Desktop\snake1\Snake (1)\Snake\bin\x64\Debug\System.Text.Json.xml
-C:\Users\vygan\Desktop\snake1\Snake (1)\Snake\bin\x64\Debug\System.Threading.Tasks.Extensions.xml
-C:\Users\vygan\Desktop\snake1\Snake (1)\Snake\bin\x64\Debug\System.ValueTuple.xml
-C:\Users\vygan\Desktop\snake1\Snake (1)\Snake\obj\x64\Debug\Snake.csprojAssemblyReference.cache
-C:\Users\vygan\Desktop\snake1\Snake (1)\Snake\obj\x64\Debug\Snake.Form1.resources
-C:\Users\vygan\Desktop\snake1\Snake (1)\Snake\obj\x64\Debug\Snake.Properties.Resources.resources
-C:\Users\vygan\Desktop\snake1\Snake (1)\Snake\obj\x64\Debug\Snake.csproj.GenerateResource.cache
-C:\Users\vygan\Desktop\snake1\Snake (1)\Snake\obj\x64\Debug\Snake.csproj.CoreCompileInputs.cache
-C:\Users\vygan\Desktop\snake1\Snake (1)\Snake\obj\x64\Debug\Snake.csproj.CopyComplete
-C:\Users\vygan\Desktop\snake1\Snake (1)\Snake\obj\x64\Debug\Snake.exe
-C:\Users\vygan\Desktop\snake1\Snake (1)\Snake\obj\x64\Debug\Snake.pdb
->>>>>>> 47a5d33c219f00b9ab8fed2e74a459613b450a7c

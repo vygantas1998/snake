@@ -70,7 +70,7 @@ namespace ServerApp
 
         public void ExecuteServer()
         {
-            IPAddress ipAddr = allIps[3];
+            IPAddress ipAddr = allIps[2];
             IPEndPoint localEndPoint = new IPEndPoint(ipAddr, Port);
             Socket listener = new Socket(ipAddr.AddressFamily,
                          SocketType.Stream, ProtocolType.Tcp);

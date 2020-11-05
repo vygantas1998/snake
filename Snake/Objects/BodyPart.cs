@@ -20,23 +20,11 @@ namespace Snake.Objects
             Color = color;
         }
 
-        public Brush getColor()
+        public virtual Brush getColor()
         {
-            switch (Color)
-            {
-                case "Black":
-                    return Brushes.Black;
-                case "Green":
-                    return Brushes.Green;
-                case "Red":
-                    return Brushes.Red;
-                case "Violet":
-                    return Brushes.Violet;
-                case "Aqua":
-                    return Brushes.Aqua;
-                default:
-                    return Brushes.Black;
-            }
+            Type t = typeof(Brushes);
+            Brush b = (Brush)t.GetProperty(Color).GetValue(null, null);
+            return b;
         }
     }
 }

@@ -60,12 +60,12 @@ namespace Snake
         {
             Random rnd = new Random();
             PowerUpContext power = new PowerUpContext(powerUp);
-            if (powerUp.Random > 80)
+            if (powerUp.Random > 70)
             {
                 RarePowerUp rare = new RarePowerUp();
                 rare.SetComponent(powerUp);
                 power = new PowerUpContext(rare);
-                if (powerUp.Random > 90)
+                if (powerUp.Random > 80)
                 {
                     ColorPowerUp color = new ColorPowerUp();
                     color.SetComponent(rare);
@@ -75,6 +75,10 @@ namespace Snake
                         LenghtPowerUp len = new LenghtPowerUp();
                         len.SetComponent(color);
                         power = new PowerUpContext(len);
+                        if (powerUp.Random > 97)
+                        {
+                            power = new PowerUpContext(new PowerUpAdapter());
+                        }
                     }
                 }
             }

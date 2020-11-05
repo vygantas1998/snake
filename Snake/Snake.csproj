@@ -97,6 +97,8 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Input.cs" />
+    <Compile Include="Objects\AdapteePoweUp.cs" />
+    <Compile Include="Objects\PowerUpAdapter.cs" />
     <Compile Include="Objects\Levels\Easy.cs" />
     <Compile Include="Objects\Levels\Hard.cs" />
     <Compile Include="Objects\Levels\Level.cs" />

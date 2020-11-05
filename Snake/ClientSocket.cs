@@ -141,6 +141,10 @@ namespace Snake
                 }
                 
             }
+            else if (dataPairs.ContainsKey("pauseGame"))
+            {
+                map.isPause = !map.isPause;
+            }
         }
         public void AddSnake(SnakeBody snake)
         {
@@ -167,6 +171,12 @@ namespace Snake
             JObject generatePowerUp = new JObject();
             generatePowerUp["generatePowerUp"] = true;
             SendMessage(generatePowerUp.ToString());
+        }
+        public void PauseGame()
+        {
+            JObject pauseGame = new JObject();
+            pauseGame["pauseGame"] = true;
+            SendMessage(pauseGame.ToString());
         }
     }
 }

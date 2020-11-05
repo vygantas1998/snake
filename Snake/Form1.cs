@@ -30,6 +30,10 @@ namespace Snake
             comboBox1.Items.Add("Medium");
             comboBox1.Items.Add("Hard");
             comboBox1.SelectedItem = "Easy";
+            comboBox2.Items.Add("Black");
+            comboBox2.Items.Add("Violet");
+            comboBox2.Items.Add("Aqua");
+            comboBox2.SelectedItem = "Black";
         }
 
         public void ControlsAfterConnect(bool show)
@@ -124,7 +128,7 @@ namespace Snake
             }
             if (Input.KeyPressed(Keys.P))
             {
-                map.isPause = !map.isPause;
+                client.PauseGame();
             }
             pbCanvas.Invalidate();
         }
@@ -168,7 +172,9 @@ namespace Snake
             if (client == null)
             {
                 client = new ClientSocket(textBox1.Text, textBox2.Text, richTextBox1, this);
-                client.AddSnake(map.addSnake(10, 10, "Black", "Green", 16));
+                client.AddSnake(map.addSnake(10, 10, comboBox2.SelectedItem.ToString(), "Green", 16));
+                comboBox2.Visible = false;
+                label3.Visible = false;
                 ControlsAfterConnect(true);
             }
         }

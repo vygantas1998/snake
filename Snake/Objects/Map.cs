@@ -61,17 +61,17 @@ namespace Snake
             Random rnd = new Random();
             int bonusPoints = 0;
             PowerUpContext power = new PowerUpContext(powerUp);
-            if (rnd.Next(0, 100) > 50)
+            if (rnd.Next(0, 100) > 95)
             {
                 SpeedUpPowerUp rare = new SpeedUpPowerUp();
                 rare.SetComponent(powerUp);
                 power = new PowerUpContext(rare);
-                if (rnd.Next(0, 100) > 50)
+                if (rnd.Next(0, 100) > 95)
                 {
                     ColorPowerUp color = new ColorPowerUp();
                     color.SetComponent(rare);
                     power = new PowerUpContext(color);
-                    if (rnd.Next(0, 100) > 50)
+                    if (rnd.Next(0, 100) > 95)
                     {
                         LenghtPowerUp len = new LenghtPowerUp();
                         len.SetComponent(color);

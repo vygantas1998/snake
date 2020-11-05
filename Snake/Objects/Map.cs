@@ -24,6 +24,7 @@ namespace Snake
         public Level Level { get; set; }
         public bool gameStarted = false;
         public bool isServer { get; set; }
+        public bool isPause { get; set; }
 
         private static Map instance = null;
         public static Map GetInstance
@@ -46,6 +47,7 @@ namespace Snake
             Snakes = new List<SnakeBody>();
             Scores = new List<Score>();
             gameStarted = false;
+            isPause = false;
             ClearMap();
         }
         public SnakeBody addSnake(int X, int Y, string headColor, string bodyColor, int speed)
@@ -57,29 +59,31 @@ namespace Snake
         public int eatFood(int snake, PowerUp powerUp)
         {
             Random rnd = new Random();
-            if (rnd.Next(0, 100) > 95)
+            int bonusPoints = 0;
+            PowerUpContext power = new PowerUpContext(powerUp);
+            if (rnd.Next(0, 100) > 50)
             {
-                RarePowerUp rare = new RarePowerUp();
+                SpeedUpPowerUp rare = new SpeedUpPowerUp();
                 rare.SetComponent(powerUp);
-                rare.Eat(Snakes[snake]);
-                return powerUp.Points + 50;
+                power = new PowerUpContext(rare);
+                if (rnd.Next(0, 100) > 50)
+                {
+                    ColorPowerUp color = new ColorPowerUp();
+                    color.SetComponent(rare);
+                    power = new PowerUpContext(color);
+                    if (rnd.Next(0, 100) > 50)
+                    {
+                        LenghtPowerUp len = new LenghtPowerUp();
+                        len.SetComponent(color);
+                        power = new PowerUpContext(len);
+                        bonusPoints += 50;
+                    }
+                    bonusPoints += 50;
+                }
+                bonusPoints += 50;
             }
-            if (rnd.Next(0, 100) > 95)
-            {
-                ColorPowerUp color = new ColorPowerUp();
-                color.SetComponent(powerUp);
-                color.Eat(Snakes[snake]);
-                return powerUp.Points + 50;
-            }
-            if (rnd.Next(0, 100) > 95)
-            {
-                LenghtPowerUp len = new LenghtPowerUp();
-                len.SetComponent(powerUp);
-                len.Eat(Snakes[snake]);
-                return powerUp.Points + 50;
-            }
-            powerUp.Eat(Snakes[snake]);
-            return powerUp.Points;
+            power.Eat(Snakes[snake]);
+            return powerUp.Points + bonusPoints;
         }
         public void addScore(int snake, int points)
         {
@@ -113,9 +117,12 @@ namespace Snake
         }
         public void MoveSnakes()
         {
-            foreach(SnakeBody snake in Snakes)
+            if (!isPause)
             {
-                snake.MoveSnake(this);
+                foreach (SnakeBody snake in Snakes)
+                {
+                    snake.MoveSnake(this);
+                }
             }
         }
         public void addFood(int x, int y, bool isBuff, PowerUpType powerUpType)

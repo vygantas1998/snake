@@ -30,6 +30,8 @@ namespace Snake.Objects
                     return Brushes.Green;
                 case "Red":
                     return Brushes.Red;
+                case "Violet":
+                    return Brushes.Violet;
                 default:
                     return Brushes.Black;
             }

@@ -118,9 +118,13 @@ namespace Snake
                 client.AddPowerUp();
                 lblScore.Text = map.Scores[map.snakeId].Points.ToString();
             }
-            if(!lblGameOver.Visible && map.Snakes[map.snakeId].isDead)
+            if (!lblGameOver.Visible && map.Snakes[map.snakeId].isDead)
             {
                 lblGameOver.Visible = true;
+            }
+            if (Input.KeyPressed(Keys.P))
+            {
+                map.isPause = !map.isPause;
             }
             pbCanvas.Invalidate();
         }
@@ -168,5 +172,11 @@ namespace Snake
                 ControlsAfterConnect(true);
             }
         }
+
+        //private void button3_Click(object sender, EventArgs e)
+        //{
+        //    map.isPause = button3.Text == "Pause";
+        //    button3.Text = button3.Text == "Pause" ? "UnPause" : "Pause";
+        //}
     }
 }

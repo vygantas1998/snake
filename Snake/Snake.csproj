@@ -107,6 +107,7 @@
     <Compile Include="Objects\Obstacle.cs" />
     <Compile Include="Objects\PowerUp.cs" />
     <Compile Include="Objects\PowerUps\AbstractPowerUpFactory.cs" />
+    <Compile Include="Objects\PowerUps\BasePowerUp.cs" />
     <Compile Include="Objects\PowerUps\ColorPowerUp.cs" />
     <Compile Include="Objects\PowerUps\LenghtPowerUp.cs" />
     <Compile Include="Objects\PowerUps\RarePowerUp.cs" />

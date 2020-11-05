@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Snake.Objects.PowerUps
 {
-    class BasePowerUp
+    abstract class BasePowerUp : PowerUp
     {
+        public override void Eat(SnakeBody snake)
+        { 
+            
+        }
     }
 }

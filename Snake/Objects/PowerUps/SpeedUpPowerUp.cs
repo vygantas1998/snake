@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Snake.Objects.PowerUps
 {
-    class SpeedUpPowerUp: PowerUpDecorator
+    class RarePowerUp: PowerUpDecorator
     {
         public override void Eat(SnakeBody snake)
         {
             base.Eat(snake);
-            snake.Speed += 1;
+            Points += 50;
         }
     }
 }

@@ -12,6 +12,6 @@ namespace Snake.Objects.PowerUps
     }
     public abstract class AbstractPowerUpFactory
     {
-        public abstract PowerUp getPowerUp(int x, int y, PowerUpType powerUpType);
+        public abstract PowerUp getPowerUp(int x, int y, PowerUpType powerUpType, int random);
     }
 }

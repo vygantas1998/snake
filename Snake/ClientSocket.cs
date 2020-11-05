@@ -122,7 +122,7 @@ namespace Snake
                 map.addFood(int.Parse(dataPairs["powerUp"]["x"].ToString()), 
                 int.Parse(dataPairs["powerUp"]["y"].ToString()), 
                 bool.Parse(dataPairs["powerUp"]["isBuff"].ToString()), 
-                (Objects.PowerUps.PowerUpType)int.Parse(dataPairs["powerUp"]["powerUpType"].ToString()));
+                (Objects.PowerUps.PowerUpType)int.Parse(dataPairs["powerUp"]["powerUpType"].ToString()), int.Parse(dataPairs["powerUp"]["random"].ToString()));
             }
             else if (dataPairs.ContainsKey("message"))
             {

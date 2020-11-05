@@ -22,7 +22,7 @@ namespace Snake.Objects.Levels
         {
             Random rnd = new Random();
             AbstractPowerUpFactory powerUpFactory = PowerUpFactoryProducer.getFactory(rnd.Next(100) > 30? true : false);
-            PowerUp powerUp = powerUpFactory.getPowerUp(rnd.Next(8, mapHeight-8), rnd.Next(8, mapWidth-8), PowerUpType.Size);
+            PowerUp powerUp = powerUpFactory.getPowerUp(rnd.Next(8, mapHeight-8), rnd.Next(8, mapWidth-8), PowerUpType.Size, rnd.Next(0, 100));
             return powerUp;
         }
     }

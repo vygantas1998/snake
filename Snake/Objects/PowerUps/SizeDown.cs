@@ -7,11 +7,12 @@ namespace Snake.Objects.PowerUps
 {
     public class SizeDown : Size
     {
-        public SizeDown(int x, int y)
+        public SizeDown(int x, int y, int random)
         {
             X = x;
             Y = y;
             Points = -50;
+            Random = random;
         }
         public override void Eat(SnakeBody snake)
         {

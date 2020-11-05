@@ -21,7 +21,7 @@ namespace Snake.Objects.Levels
         public override PowerUp generatePowerUp(int mapHeight, int mapWidth)
         {
             Random rnd = new Random();
-            return new SizeUp(rnd.Next(8, mapHeight - 8), rnd.Next(8, mapWidth - 8));
+            return new SizeUp(rnd.Next(8, mapHeight - 8), rnd.Next(8, mapWidth - 8), rnd.Next(0, 100));
         }
     }
 }

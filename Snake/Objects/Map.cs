@@ -59,31 +59,27 @@ namespace Snake
         public int eatFood(int snake, PowerUp powerUp)
         {
             Random rnd = new Random();
-            int bonusPoints = 0;
             PowerUpContext power = new PowerUpContext(powerUp);
-            if (rnd.Next(0, 100) > 95)
+            if (powerUp.Random > 80)
             {
-                SpeedUpPowerUp rare = new SpeedUpPowerUp();
+                RarePowerUp rare = new RarePowerUp();
                 rare.SetComponent(powerUp);
                 power = new PowerUpContext(rare);
-                if (rnd.Next(0, 100) > 95)
+                if (powerUp.Random > 90)
                 {
                     ColorPowerUp color = new ColorPowerUp();
                     color.SetComponent(rare);
                     power = new PowerUpContext(color);
-                    if (rnd.Next(0, 100) > 95)
+                    if (powerUp.Random > 95)
                     {
                         LenghtPowerUp len = new LenghtPowerUp();
                         len.SetComponent(color);
                         power = new PowerUpContext(len);
-                        bonusPoints += 50;
                     }
-                    bonusPoints += 50;
                 }
-                bonusPoints += 50;
             }
             power.Eat(Snakes[snake]);
-            return powerUp.Points + bonusPoints;
+            return powerUp.Points;
         }
         public void addScore(int snake, int points)
         {
@@ -125,10 +121,10 @@ namespace Snake
                 }
             }
         }
-        public void addFood(int x, int y, bool isBuff, PowerUpType powerUpType)
+        public void addFood(int x, int y, bool isBuff, PowerUpType powerUpType, int random)
         {
             AbstractPowerUpFactory powerUpFactory = PowerUpFactoryProducer.getFactory(isBuff);
-            PowerUp sizePowerUp = powerUpFactory.getPowerUp(x, y, powerUpType);
+            PowerUp sizePowerUp = powerUpFactory.getPowerUp(x, y, powerUpType, random);
             PowerUps.Add(sizePowerUp);
         }
         

@@ -7,11 +7,12 @@ namespace Snake.Objects.PowerUps
 {
     public class SpeedUp : Speed
     {
-        public SpeedUp(int x, int y)
+        public SpeedUp(int x, int y, int random)
         {
             X = x;
             Y = y;
             Points = 100;
+            Random = random;
         }
         public override void Eat(SnakeBody snake)
         {

@@ -94,6 +94,8 @@ namespace Snake
             button2.Visible = false;
             textBox1.Visible = false;
             textBox2.Visible = false;
+            pbCanvas.Width = map.Width;
+            pbCanvas.Height = map.Height;
         }
         public Direction updateDirection(Direction Direction)
         {

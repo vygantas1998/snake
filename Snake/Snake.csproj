@@ -116,7 +116,7 @@
     <Compile Include="Objects\PowerUps\ColorPowerUp.cs" />
     <Compile Include="Objects\PowerUps\LenghtPowerUp.cs" />
     <Compile Include="Objects\PowerUps\PowerUpContext.cs" />
-    <Compile Include="Objects\PowerUps\SpeedUpPowerUp.cs" />
+    <Compile Include="Objects\PowerUps\RarePowerUp.cs" />
     <Compile Include="Objects\PowerUps\PowerUpFactoryProducer.cs" />
     <Compile Include="Objects\PowerUps\BuffUpFactory.cs" />
     <Compile Include="Objects\PowerUps\Size.cs" />

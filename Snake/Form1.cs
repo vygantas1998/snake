@@ -34,6 +34,8 @@ namespace Snake
             comboBox2.Items.Add("Violet");
             comboBox2.Items.Add("Aqua");
             comboBox2.SelectedItem = "Black";
+            map.Width = pbCanvas.Width;
+            map.Height = pbCanvas.Height;
         }
 
         public void ControlsAfterConnect(bool show)
@@ -65,7 +67,7 @@ namespace Snake
 
         private void button1_Click(object sender, EventArgs e)
         {
-            client.GameStart(comboBox1.SelectedItem.ToString());
+            client.GameStart(comboBox1.SelectedItem.ToString(), map.Width, map.Height);
             client.AddPowerUp();
         }
 

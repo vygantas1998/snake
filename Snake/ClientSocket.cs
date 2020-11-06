@@ -169,11 +169,13 @@ namespace Snake
             changeDirection["snakeId"] = map.snakeId;
             SendMessage(changeDirection.ToString());
         }
-        public void GameStart(string level)
+        public void GameStart(string level, int mapWidth, int mapHeight)
         {
             JObject gameStart = new JObject();
             gameStart["gameStart"] = true;
             gameStart["level"] = level;
+            gameStart["mapWidth"] = mapWidth;
+            gameStart["mapHeight"] = mapHeight;
             SendMessage(gameStart.ToString());
         }
         public void AddPowerUp()

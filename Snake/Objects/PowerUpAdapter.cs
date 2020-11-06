@@ -16,7 +16,6 @@ namespace Snake.Objects
             _adaptee.AddSpeed(snake, 5);
             _adaptee.AddLength(snake);
             _adaptee.ChangeColor(snake, "Teal");
-            Points = 500;
         }
     }
 }

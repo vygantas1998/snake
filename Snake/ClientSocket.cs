@@ -143,7 +143,17 @@ namespace Snake
             }
             else if (dataPairs.ContainsKey("pauseGame"))
             {
-                map.isPause = !map.isPause;
+                Command command = new CommandPause(map);
+                Invoker invoker = new Invoker();
+                invoker.SetCommand(command);
+                if (!map.isPause)
+                {
+                    command.Execute();
+                }
+                else
+                {
+                    command.UnExecute();
+                }
             }
         }
         public void AddSnake(SnakeBody snake)

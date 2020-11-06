@@ -31,7 +31,7 @@ namespace ServerApp
                 PowerUp powerUp = Map.PowerUps[Map.PowerUps.Count - 1];
                 SendClientMessage(powerUp.toJSON().ToString());
             }
-            if (data.ContainsKey("addSnake"))
+            else if (data.ContainsKey("addSnake"))
             {
                 JObject snak = new JObject();
                 snak["syncSnakes"] = JObject.Parse("{\"snakes\":" + JsonSerializer.Serialize(Map.Snakes) + "}")["snakes"];

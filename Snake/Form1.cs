@@ -120,10 +120,13 @@ namespace Snake
             }
             map.MoveSnakes();
             int points = map.checkForFood();
-            if (points != 0 && map.snakeId == 0)
+            if (points != -99999 && map.snakeId == 0)
+            {
+                client.AddPowerUp();
+            }
+            if(points != -99999)
             {
                 map.addScore(map.snakeId, points);
-                client.AddPowerUp();
             }
             lblScore.Text = map.Scores[map.snakeId].Points.ToString();
             if (!lblGameOver.Visible && map.Snakes[map.snakeId].isDead)

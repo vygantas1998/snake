@@ -108,7 +108,7 @@ namespace Snake
                 }
                 snkId++;
             }
-            return 0;
+            return -99999;
         }
         private int Eat(int snake,PowerUp powerUp)
         {

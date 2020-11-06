@@ -148,11 +148,11 @@ namespace Snake
                 invoker.SetCommand(command);
                 if (!map.isPause)
                 {
-                    command.Execute();
+                    invoker.ExecuteCommand();
                 }
                 else
                 {
-                    command.UnExecute();
+                    invoker.Undo();
                 }
             }
         }

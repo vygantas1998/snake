@@ -120,8 +120,8 @@ namespace Snake
             {
                 map.addScore(map.snakeId, points);
                 client.AddPowerUp();
-                lblScore.Text = map.Scores[map.snakeId].Points.ToString();
             }
+            lblScore.Text = map.Scores[map.snakeId].Points.ToString();
             if (!lblGameOver.Visible && map.Snakes[map.snakeId].isDead)
             {
                 lblGameOver.Visible = true;

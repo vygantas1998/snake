@@ -1,4 +1,6 @@
 ﻿using Snake.Objects;
+using Snake.Objects.Proxy;
+using Snake.Objects.State;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -47,11 +49,11 @@ namespace Snake
 
         private void pbCanvas_Paint(object sender, PaintEventArgs e)
         {
-            if (map.gameStarted)
+            if (map.gameStarted is Started)
             {
                 Graphics canvas = e.Graphics;
-                drawSnakes(canvas);
-                drawPowerUps(canvas);
+                DrawSnakes(canvas);
+                DrawPowerUps(canvas);
             }
         }
 
@@ -86,7 +88,7 @@ namespace Snake
         }
         private void gameStartTest()
         {
-            map.gameStarted = true;
+            map.gameStarted.Handle(map);
             gameTimer.Interval = 1000 / 16;
             gameTimer.Tick += UpdateScreen;
             gameTimer.Start();
@@ -140,39 +142,24 @@ namespace Snake
             pbCanvas.Invalidate();
         }
 
-        public void drawSnakes(Graphics canvas)
+        public void DrawSnakes(Graphics canvas)
         {
             foreach (SnakeBody snake in map.Snakes)
             {
                 foreach (BodyPart part in snake.BodyParts)
                 {
-                    DrawBodyPart(part, canvas);
+                    new DrawProxy().DrawBodyPart(part, canvas);
                 }
             }
         }
-        public void drawPowerUps(Graphics canvas)
+        public void DrawPowerUps(Graphics canvas)
         {
             foreach (PowerUp powerUp in map.PowerUps)
             {
-                DrawPowerUp(powerUp, canvas);
+                new DrawProxy().DrawPowerUp(powerUp, canvas);
             }
         }
 
-        public void DrawBodyPart(BodyPart part, Graphics canvas)
-        {
-            canvas.FillEllipse(part.getColor(),
-                          new Rectangle(part.X,
-                                         part.Y,
-                                         16, 16));
-        }
-
-        public void DrawPowerUp(PowerUp part, Graphics canvas)
-        {
-            canvas.FillEllipse(part.Color,
-                          new Rectangle(part.X,
-                                         part.Y,
-                                         16, 16));
-        }
 
         private void button2_Click(object sender, EventArgs e)
         {

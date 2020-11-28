@@ -2,6 +2,7 @@
 using Snake.Objects;
 using Snake.Objects.Levels;
 using Snake.Objects.PowerUps;
+using Snake.Objects.State;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -22,7 +23,7 @@ namespace Snake
         public int Width { get; set; }
         public int Height { get; set; }
         public Level Level { get; set; }
-        public bool gameStarted = false;
+        public GameState gameStarted { get; set; }
         public bool isServer { get; set; }
         public bool isPause { get; set; }
 
@@ -46,7 +47,7 @@ namespace Snake
             Level = LevelFactory.CreateLevel();
             Snakes = new List<SnakeBody>();
             Scores = new List<Score>();
-            gameStarted = false;
+            gameStarted = new NotStarted();
             isPause = false;
             ClearMap();
         }
@@ -178,17 +179,17 @@ namespace Snake
             Scores.Clear();
             Snakes.Clear();
         }
-        public void SetFromData(MapData map)
-        {
-            Obstacles = map.Obstacles;
-            PowerUps = map.PowerUps;
-            Scores = map.Scores;
-            Snakes = map.Snakes;
-            snakeId = map.snakeId;
-            Width = map.Width;
-            Height = map.Height;
-            Level = LevelFactory.CreateLevel(map.Level);
-            gameStarted = map.gameStarted;
-        }
+        //public void SetFromData(MapData map)
+        //{
+        //    Obstacles = map.Obstacles;
+        //    PowerUps = map.PowerUps;
+        //    Scores = map.Scores;
+        //    Snakes = map.Snakes;
+        //    snakeId = map.snakeId;
+        //    Width = map.Width;
+        //    Height = map.Height;
+        //    Level = LevelFactory.CreateLevel(map.Level);
+        //    gameStarted = map.gameStarted;
+        //}
     }
 }

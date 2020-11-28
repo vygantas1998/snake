@@ -129,6 +129,8 @@ namespace ServerApp
                     if (dataPairs.ContainsKey("gameStart"))
                     {
                         map.Level = LevelFactory.CreateLevel(dataPairs["level"].ToString());
+                        map.Width = map.Width > int.Parse(dataPairs["mapWidth"].ToString()) ? int.Parse(dataPairs["mapWidth"].ToString()) : map.Width;
+                        map.Height = map.Height > int.Parse(dataPairs["mapHeight"].ToString()) ? int.Parse(dataPairs["mapHeight"].ToString()) : map.Height;
                     }
                     ProcessData(dataPairs);
                 }

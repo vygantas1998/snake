@@ -1,4 +1,3 @@
-using LibNoise.Renderer;
 using Moq;
 using Snake.Objects;
 using System;

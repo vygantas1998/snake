@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Snake.Objects.PowerUps
 {
+//
     class ColorPowerUp : PowerUpDecorator
     {
         public override void Eat(SnakeBody snake)

@@ -11,13 +11,13 @@ namespace Snake.Objects.Proxy
     {
         private DrawSubject _realSubject = new DrawSubject();
 
-        public override void DrawBodyPart(BodyPart part, Graphics canvas)
+        public override void DrawSnakes(Graphics canvas, Map map)
         {
-            _realSubject.DrawBodyPart(part, canvas);
+            _realSubject.DrawSnakes(canvas, map);
         }
-        public override void DrawPowerUp(PowerUp part, Graphics canvas)
+        public override void DrawPowerUps(Graphics canvas, Map map)
         {
-            _realSubject.DrawPowerUp(part, canvas);
+            _realSubject.DrawPowerUps(canvas, map);
         }
     }
 }

@@ -139,9 +139,14 @@
     <Compile Include="Objects\Score.cs" />
     <Compile Include="Objects\SnakeBody.cs" />
     <Compile Include="Objects\BodyPart.cs" />
+    <Compile Include="Objects\State\GameOver.cs" />
     <Compile Include="Objects\State\NotStarted.cs" />
+    <Compile Include="Objects\State\Pause.cs" />
     <Compile Include="Objects\State\Started.cs" />
     <Compile Include="Objects\State\GameState.cs" />
+    <Compile Include="Objects\TemplateM\BodyTemp.cs" />
+    <Compile Include="Objects\TemplateM\DrawDAO.cs" />
+    <Compile Include="Objects\TemplateM\PowerUpTemp.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

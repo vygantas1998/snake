@@ -23,9 +23,8 @@ namespace Snake
         public int Width { get; set; }
         public int Height { get; set; }
         public Level Level { get; set; }
-        public GameState gameStarted { get; set; }
+        public GameState gameState { get; set; }
         public bool isServer { get; set; }
-        public bool isPause { get; set; }
 
         private static Map instance = null;
         public static Map GetInstance
@@ -47,8 +46,7 @@ namespace Snake
             Level = LevelFactory.CreateLevel();
             Snakes = new List<SnakeBody>();
             Scores = new List<Score>();
-            gameStarted = new NotStarted();
-            isPause = false;
+            gameState = new NotStarted();
             ClearMap();
         }
         public SnakeBody addSnake(int X, int Y, string headColor, string bodyColor, int speed)
@@ -118,7 +116,7 @@ namespace Snake
         }
         public void MoveSnakes()
         {
-            if (!isPause)
+            if (gameState is Started)
             {
                 foreach (SnakeBody snake in Snakes)
                 {
@@ -178,6 +176,19 @@ namespace Snake
             PowerUps.Clear();
             Scores.Clear();
             Snakes.Clear();
+        }
+        public bool CheckIfAllIsDead()
+        {
+            bool allDead = true;
+            foreach(SnakeBody s in Snakes)
+            {
+                if (!s.isDead)
+                {
+                    allDead = false;
+                    break;
+                }
+            }
+            return allDead;
         }
         //public void SetFromData(MapData map)
         //{

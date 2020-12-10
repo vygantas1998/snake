@@ -1,4 +1,6 @@
-﻿namespace Snake.Objects
+﻿using Snake.Objects.State;
+
+namespace Snake.Objects
 {
     class CommandPause : Command
 
@@ -7,11 +9,17 @@
 
         public override void Execute()
         {
-            receiver.isPause = true;
+            if (receiver.gameState is Started)
+            {
+                receiver.gameState.Handle(receiver);
+            }
         }
         public override void UnExecute()
         {
-            receiver.isPause = false;
+            if (receiver.gameState is Pause)
+            {
+                receiver.gameState.Handle(receiver);
+            }
         }
     }
 }

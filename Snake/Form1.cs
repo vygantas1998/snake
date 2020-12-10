@@ -49,11 +49,11 @@ namespace Snake
 
         private void pbCanvas_Paint(object sender, PaintEventArgs e)
         {
-            if (map.gameStarted is Started)
+            if (map.gameState is Started)
             {
                 Graphics canvas = e.Graphics;
-                DrawSnakes(canvas);
-                DrawPowerUps(canvas);
+                new DrawProxy().DrawSnakes(canvas, map);
+                new DrawProxy().DrawPowerUps(canvas, map);
             }
         }
 
@@ -88,7 +88,7 @@ namespace Snake
         }
         private void gameStartTest()
         {
-            map.gameStarted.Handle(map);
+            map.gameState.Handle(map);
             gameTimer.Interval = 1000 / 16;
             gameTimer.Tick += UpdateScreen;
             gameTimer.Start();
@@ -131,8 +131,9 @@ namespace Snake
                 map.addScore(map.snakeId, points);
             }
             lblScore.Text = map.Scores[map.snakeId].Points.ToString();
-            if (!lblGameOver.Visible && map.Snakes[map.snakeId].isDead)
+            if (map.CheckIfAllIsDead() && map.gameState is Started)
             {
+                map.gameState.Handle(map);
                 lblGameOver.Visible = true;
             }
             if (Input.KeyPressed(Keys.P))
@@ -141,25 +142,6 @@ namespace Snake
             }
             pbCanvas.Invalidate();
         }
-
-        public void DrawSnakes(Graphics canvas)
-        {
-            foreach (SnakeBody snake in map.Snakes)
-            {
-                foreach (BodyPart part in snake.BodyParts)
-                {
-                    new DrawProxy().DrawBodyPart(part, canvas);
-                }
-            }
-        }
-        public void DrawPowerUps(Graphics canvas)
-        {
-            foreach (PowerUp powerUp in map.PowerUps)
-            {
-                new DrawProxy().DrawPowerUp(powerUp, canvas);
-            }
-        }
-
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -172,11 +154,5 @@ namespace Snake
                 ControlsAfterConnect(true);
             }
         }
-
-        //private void button3_Click(object sender, EventArgs e)
-        //{
-        //    map.isPause = button3.Text == "Pause";
-        //    button3.Text = button3.Text == "Pause" ? "UnPause" : "Pause";
-        //}
     }
 }

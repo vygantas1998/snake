@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace Snake.Objects.State
 {
-    public class NotStarted : GameState
-
+    public class GameOver : GameState
     {
         public override void Handle(Map map)
         {
-            map.gameState = new Started();
+            map.gameState = new NotStarted();
         }
     }
 }

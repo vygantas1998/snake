@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Linq;
 using Snake.Objects;
 using Snake.Objects.PowerUps;
+using Snake.Objects.State;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -146,7 +147,7 @@ namespace Snake
                 Command command = new CommandPause(map);
                 Invoker invoker = new Invoker();
                 invoker.SetCommand(command);
-                if (!map.isPause)
+                if (map.gameState is Started)
                 {
                     invoker.ExecuteCommand();
                 }

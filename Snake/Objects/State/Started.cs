@@ -4,7 +4,15 @@
     {
         public override void Handle(Map map)
         {
-            map.gameStarted = new NotStarted();
+            bool isAllDead = map.CheckIfAllIsDead();
+            if (isAllDead)
+            {
+                map.gameState = new GameOver();
+            }
+            else
+            {
+                map.gameState = new Pause();
+            }
         }
     }
 }

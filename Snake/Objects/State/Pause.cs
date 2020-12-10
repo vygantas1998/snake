@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Snake.Objects.State
 {
-    public class NotStarted : GameState
-
+    public class Pause : GameState
     {
         public override void Handle(Map map)
         {
@@ -15,3 +14,4 @@ namespace Snake.Objects.State
         }
     }
 }
+

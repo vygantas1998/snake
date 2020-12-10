@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Snake.Objects.TemplateM;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -9,20 +10,33 @@ namespace Snake.Objects.Proxy
 {
     class DrawSubject : Subject
     {
-        public override void DrawBodyPart(BodyPart part, Graphics canvas)
+        public override void DrawSnakes(Graphics canvas, Map map)
         {
-            canvas.FillEllipse(part.getColor(),
-                          new Rectangle(part.X,
-                                         part.Y,
-                                         16, 16));
+            foreach (SnakeBody snake in map.Snakes)
+            {
+                foreach (BodyPart part in snake.BodyParts)
+                {
+                   DrawBodyPart(part, canvas);
+                }
+            }
+        }
+        public override void DrawPowerUps(Graphics canvas, Map map)
+        {
+            foreach (PowerUp powerUp in map.PowerUps)
+            {
+               DrawPowerUp(powerUp, canvas);
+            }
+        }
+        public void DrawBodyPart(BodyPart part, Graphics canvas)
+        {
+            DrawDAO bodyDao = new BodyTemp(part);
+            bodyDao.Run(canvas);
         }
 
-        public override void DrawPowerUp(PowerUp part, Graphics canvas)
+        public void DrawPowerUp(PowerUp part, Graphics canvas)
         {
-            canvas.FillEllipse(part.Color,
-                          new Rectangle(part.X,
-                                         part.Y,
-                                         16, 16));
+            DrawDAO partDao = new PowerUpTemp(part);
+            partDao.Run(canvas);
         }
     }
 }

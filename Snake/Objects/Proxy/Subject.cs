@@ -9,7 +9,7 @@ namespace Snake.Objects.Proxy
 {
     abstract class Subject
     {
-        public abstract void DrawBodyPart(BodyPart part, Graphics canvas);
-        public abstract void DrawPowerUp(PowerUp part, Graphics canvas);
+        public abstract void DrawSnakes(Graphics canvas, Map map);
+        public abstract void DrawPowerUps(Graphics canvas, Map map);
     }
 }

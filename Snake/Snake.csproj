@@ -108,6 +108,8 @@
     <Compile Include="Objects\Command.cs" />
     <Compile Include="Objects\CommandPause.cs" />
     <Compile Include="Objects\Invoker.cs" />
+    <Compile Include="Objects\Memento\ProspectMemory.cs" />
+    <Compile Include="Objects\Memento\SnakeMemento.cs" />
     <Compile Include="Objects\PowerUpAdapter.cs" />
     <Compile Include="Objects\Levels\Easy.cs" />
     <Compile Include="Objects\Levels\Hard.cs" />

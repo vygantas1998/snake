@@ -96,6 +96,7 @@ namespace Snake
             button2.Visible = false;
             textBox1.Visible = false;
             textBox2.Visible = false;
+            textBox3.Visible = false;
             pbCanvas.Width = map.Width;
             pbCanvas.Height = map.Height;
         }
@@ -139,6 +140,14 @@ namespace Snake
             if (Input.KeyPressed(Keys.P))
             {
                 client.PauseGame();
+            }
+            if (Input.KeyPressed(Keys.O))
+            {
+                client.SaveState();
+            }
+            if (Input.KeyPressed(Keys.R))
+            {
+                client.RestoreState();
             }
             pbCanvas.Invalidate();
         }

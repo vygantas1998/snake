@@ -1,6 +1,7 @@
 ﻿using ServerApp.Objects;
 using Snake.Objects;
 using Snake.Objects.Levels;
+using Snake.Objects.Memento;
 using Snake.Objects.PowerUps;
 using Snake.Objects.State;
 using System;
@@ -19,6 +20,7 @@ namespace Snake
         public List<PowerUp> PowerUps { get; set; }
         public List<Score> Scores { get; set; }
         public List<SnakeBody> Snakes { get; set; }
+        public List<ProspectMemory> SnakesSave { get; set; }
         public int snakeId { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
@@ -189,6 +191,26 @@ namespace Snake
                 }
             }
             return allDead;
+        }
+        public void SaveSnakesState()
+        {
+            SnakesSave = new List<ProspectMemory>();
+            foreach (SnakeBody s in Snakes)
+            {
+                ProspectMemory mem = new ProspectMemory();
+                mem.Memento = s.SaveMemento();
+                SnakesSave.Add(mem);
+            }
+        }
+        public void RestoreSnakesState()
+        {
+            int i = 0;
+            foreach (ProspectMemory s in SnakesSave)
+            {
+                Snakes[i].RestoreMemento(s.Memento);
+                i++;
+            }
+            SnakesSave.Clear();
         }
         //public void SetFromData(MapData map)
         //{

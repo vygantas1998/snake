@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Snake.Objects.Memento;
+using System;
 using System.Collections.Generic;
 
 namespace Snake.Objects
@@ -82,6 +83,19 @@ namespace Snake.Objects
                     isDead = true;
                 }
             }
+        }
+        public SnakeMemento SaveMemento()
+        {
+            return new SnakeMemento(Speed, isDead, BodyParts, Direction, HeadColor, BodyColor);
+        }
+        public void RestoreMemento(SnakeMemento memento)
+        {
+            this.Speed = memento.Speed;
+            this.isDead = memento.IsDead;
+            this.BodyParts = memento.BodyParts;
+            this.Direction = memento.Direction;
+            this.HeadColor = memento.HeadColor;
+            this.BodyColor = memento.BodyColor;
         }
     }
 }

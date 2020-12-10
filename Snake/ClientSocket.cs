@@ -156,6 +156,14 @@ namespace Snake
                     invoker.Undo();
                 }
             }
+            else if (dataPairs.ContainsKey("saveState"))
+            {
+                map.SaveSnakesState();
+            }
+            else if (dataPairs.ContainsKey("restoreState"))
+            {
+                map.RestoreSnakesState();
+            }
         }
         public void AddSnake(SnakeBody snake)
         {
@@ -190,6 +198,18 @@ namespace Snake
             JObject pauseGame = new JObject();
             pauseGame["pauseGame"] = true;
             SendMessage(pauseGame.ToString());
+        }
+        public void SaveState()
+        {
+            JObject saveState = new JObject();
+            saveState["saveState"] = true;
+            SendMessage(saveState.ToString());
+        }
+        public void RestoreState()
+        {
+            JObject restoreState = new JObject();
+            restoreState["restoreState"] = true;
+            SendMessage(restoreState.ToString());
         }
     }
 }

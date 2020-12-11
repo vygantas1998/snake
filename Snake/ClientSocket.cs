@@ -1,6 +1,7 @@
 ﻿// A C# program for Client 
 using Newtonsoft.Json.Linq;
 using Snake.Objects;
+using Snake.Objects.Iterator;
 using Snake.Objects.PowerUps;
 using Snake.Objects.State;
 using System;

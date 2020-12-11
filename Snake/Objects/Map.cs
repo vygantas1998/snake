@@ -1,5 +1,6 @@
 ﻿using ServerApp.Objects;
 using Snake.Objects;
+using Snake.Objects.Iterator;
 using Snake.Objects.Levels;
 using Snake.Objects.Memento;
 using Snake.Objects.PowerUps;
@@ -17,7 +18,7 @@ namespace Snake
     public sealed class Map
     {
         public List<Obstacle> Obstacles { get; set; }
-        public List<PowerUp> PowerUps { get; set; }
+        public PowerUpCollection PowerUps { get; set; }
         public List<Score> Scores { get; set; }
         public List<SnakeBody> Snakes { get; set; }
         public List<ProspectMemory> SnakesSave { get; set; }
@@ -42,7 +43,7 @@ namespace Snake
         public Map()
         {
             Obstacles = new List<Obstacle>();
-            PowerUps = new List<PowerUp>();
+            PowerUps = new PowerUpCollection();
             Width = 1000;
             Height = 969;
             Level = LevelFactory.CreateLevel();
@@ -98,13 +99,16 @@ namespace Snake
                 if (!snake.isDead)
                 {
                     BodyPart part = snake.BodyParts[0];
-                    foreach (PowerUp powerUp in PowerUps)
+                    PowerUpIterator i = PowerUps.CreateIterator();
+                    PowerUp powerUp = i.First();
+                    while (powerUp != null)
                     {
                         //Detect collision with food piece
                         if (part.X - 16 < powerUp.X && part.X + 16 > powerUp.X && part.Y - 16 < powerUp.Y && part.Y + 16 > powerUp.Y)
                         {
                             return Eat(snkId, powerUp);
                         }
+                        powerUp = i.Next();
                     }
                 }
                 snkId++;
@@ -175,7 +179,7 @@ namespace Snake
         public void ClearMap()
         {
             Obstacles.Clear();
-            PowerUps.Clear();
+            PowerUps = new PowerUpCollection();
             Scores.Clear();
             Snakes.Clear();
         }

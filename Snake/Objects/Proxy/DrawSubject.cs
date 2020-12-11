@@ -1,10 +1,6 @@
-﻿using Snake.Objects.TemplateM;
-using System;
-using System.Collections.Generic;
+﻿using Snake.Objects.Iterator;
+using Snake.Objects.TemplateM;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Snake.Objects.Proxy
 {
@@ -16,15 +12,18 @@ namespace Snake.Objects.Proxy
             {
                 foreach (BodyPart part in snake.BodyParts)
                 {
-                   DrawBodyPart(part, canvas);
+                    DrawBodyPart(part, canvas);
                 }
             }
         }
         public override void DrawPowerUps(Graphics canvas, Map map)
         {
-            foreach (PowerUp powerUp in map.PowerUps)
+            PowerUpIterator i = map.PowerUps.CreateIterator();
+            PowerUp powerUp = i.First();
+            while (powerUp != null)
             {
-               DrawPowerUp(powerUp, canvas);
+                DrawPowerUp(powerUp, canvas);
+                powerUp = i.Next();
             }
         }
         public void DrawBodyPart(BodyPart part, Graphics canvas)

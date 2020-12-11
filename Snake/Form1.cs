@@ -1,7 +1,9 @@
 ﻿using Snake.Objects;
+using Snake.Objects.Interpreter;
 using Snake.Objects.Proxy;
 using Snake.Objects.State;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -20,6 +22,7 @@ namespace Snake
 
         public bool ServerOn = false;
         ClientSocket client;
+        List<CommandExpression> commands = new List<CommandExpression>();
 
         public Form1()
         {
@@ -38,6 +41,10 @@ namespace Snake
             comboBox2.SelectedItem = "Black";
             map.Width = pbCanvas.Width;
             map.Height = pbCanvas.Height;
+            commands.Add(new SayCommand());
+            commands.Add(new GameStartCommand());
+            commands.Add(new AddPowerUpCommand());
+            commands.Add(new UnPauseCommand());
         }
 
         public void ControlsAfterConnect(bool show)
@@ -97,6 +104,7 @@ namespace Snake
             textBox1.Visible = false;
             textBox2.Visible = false;
             textBox3.Visible = false;
+            button3.Visible = false;
             pbCanvas.Width = map.Width;
             pbCanvas.Height = map.Height;
         }
@@ -149,6 +157,15 @@ namespace Snake
             {
                 client.RestoreState();
             }
+            if(map.gameState is Pause)
+            {
+                button3.Visible = true;
+                textBox3.Visible = true;
+            } else
+            {
+                button3.Visible = false;
+                textBox3.Visible = false;
+            }
             pbCanvas.Invalidate();
         }
 
@@ -161,6 +178,14 @@ namespace Snake
                 comboBox2.Visible = false;
                 label3.Visible = false;
                 ControlsAfterConnect(true);
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            foreach(CommandExpression c in commands)
+            {
+                c.Interpret(textBox3.Text, client);
             }
         }
     }

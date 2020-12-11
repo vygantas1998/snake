@@ -132,6 +132,10 @@ namespace ServerApp
                         map.Width = map.Width > int.Parse(dataPairs["mapWidth"].ToString()) ? int.Parse(dataPairs["mapWidth"].ToString()) : map.Width;
                         map.Height = map.Height > int.Parse(dataPairs["mapHeight"].ToString()) ? int.Parse(dataPairs["mapHeight"].ToString()) : map.Height;
                     }
+                    if (dataPairs.ContainsKey("sayCommand"))
+                    {
+                        Console.WriteLine(dataPairs["sayCommand"]);
+                    }
                     ProcessData(dataPairs);
                 }
                 catch (Exception e)

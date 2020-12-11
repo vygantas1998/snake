@@ -164,6 +164,9 @@ namespace Snake
             else if (dataPairs.ContainsKey("restoreState"))
             {
                 map.RestoreSnakesState();
+            } else if (dataPairs.ContainsKey("sayCommand"))
+            {
+                AddMessage(dataPairs["sayCommand"].ToString());
             }
         }
         public void AddSnake(SnakeBody snake)
@@ -211,6 +214,12 @@ namespace Snake
             JObject restoreState = new JObject();
             restoreState["restoreState"] = true;
             SendMessage(restoreState.ToString());
+        }
+        public void Say(string message)
+        {
+            JObject sayCommand = new JObject();
+            sayCommand["sayCommand"] = message;
+            SendMessage(sayCommand.ToString());
         }
     }
 }

@@ -21,7 +21,6 @@ namespace Snake.Objects.TemplateM
             canvas.FillEllipse(Color, new Rectangle(X,Y,16, 16));
         }
 
-
         public void Run(Graphics canvas)
         {
             SetColor();

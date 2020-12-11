@@ -107,6 +107,11 @@
     <Compile Include="Objects\AdapteePoweUp.cs" />
     <Compile Include="Objects\Command.cs" />
     <Compile Include="Objects\CommandPause.cs" />
+    <Compile Include="Objects\Interpreter\AddPowerUpCommand.cs" />
+    <Compile Include="Objects\Interpreter\GameStartCommand.cs" />
+    <Compile Include="Objects\Interpreter\SayCommand.cs" />
+    <Compile Include="Objects\Interpreter\CommandExpression.cs" />
+    <Compile Include="Objects\Interpreter\UnPauseCommand.cs" />
     <Compile Include="Objects\Invoker.cs" />
     <Compile Include="Objects\Iterator\PowerUpIterator.cs" />
     <Compile Include="Objects\Iterator\PowerUpCollection.cs" />

@@ -8,7 +8,11 @@ using System.Text;
 
 namespace Snake.Objects
 {
-    public abstract class PowerUp
+    public interface IPowerUp
+    {
+        void Eat(SnakeBody element);
+    }
+    public abstract class PowerUp: IPowerUp
     {
         public int X { get; set; }
         public int Y { get; set; }

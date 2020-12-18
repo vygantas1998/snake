@@ -8,11 +8,9 @@ using System.Threading.Tasks;
 namespace Snake.Objects.Iterator
 {
     interface IAbstractCollection
-
     {
         PowerUpIterator CreateIterator();
     }
-
 
     public class PowerUpCollection : IAbstractCollection
     {
@@ -22,7 +20,6 @@ namespace Snake.Objects.Iterator
         {
             return new PowerUpIterator(this);
         }
-
 
         public int Count
         {

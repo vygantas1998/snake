@@ -49,7 +49,7 @@ namespace XUnitTest.Objects.PowerUps
 
             try
             {
-                speed.Eat(snake);
+                snake.Accept(speed);
                 Assert.True(true);
             }
             catch

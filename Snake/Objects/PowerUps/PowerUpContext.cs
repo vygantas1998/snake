@@ -20,7 +20,7 @@ namespace Snake.Objects.PowerUps
 
         public void Eat(SnakeBody snake)
         {
-            _strategy.Eat(snake);
+            snake.Accept(_strategy);
         }
     }
 }

@@ -216,17 +216,5 @@ namespace Snake
             }
             SnakesSave.Clear();
         }
-        //public void SetFromData(MapData map)
-        //{
-        //    Obstacles = map.Obstacles;
-        //    PowerUps = map.PowerUps;
-        //    Scores = map.Scores;
-        //    Snakes = map.Snakes;
-        //    snakeId = map.snakeId;
-        //    Width = map.Width;
-        //    Height = map.Height;
-        //    Level = LevelFactory.CreateLevel(map.Level);
-        //    gameStarted = map.gameStarted;
-        //}
     }
 }

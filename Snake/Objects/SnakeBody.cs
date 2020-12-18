@@ -61,6 +61,10 @@ namespace Snake.Objects
                 }
             }
         }
+        public void Accept(IPowerUp visitor)
+        {
+            visitor.Eat(this);
+        }
         public void CheckForDeath(BodyPart part, Map map)
         {
             //Get maximum X and Y Pos

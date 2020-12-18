@@ -13,7 +13,7 @@
         {
             if (component != null)
             {
-                component.Eat(snake);
+                snake.Accept(component);
             }
         }
     }

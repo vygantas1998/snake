@@ -215,10 +215,13 @@ namespace Snake
             restoreState["restoreState"] = true;
             SendMessage(restoreState.ToString());
         }
-        public void Say(string message)
+        public void Say(string message, string to)
         {
             JObject sayCommand = new JObject();
-            sayCommand["sayCommand"] = message;
+            JObject data = new JObject();
+            data["msg"] = message;
+            data["to"] = to; 
+            sayCommand["sayCommand"] = data;
             SendMessage(sayCommand.ToString());
         }
     }

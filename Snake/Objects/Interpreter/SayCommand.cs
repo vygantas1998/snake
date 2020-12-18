@@ -11,7 +11,8 @@ namespace Snake.Objects.Interpreter
         public override string Command() { return "/say "; }
         public override void Execute(string data)
         {
-            Client.Say(data);
+            string[] dat = data.Split(' ');
+            Client.Say(dat[1], dat[0]);
         }
     }
 }

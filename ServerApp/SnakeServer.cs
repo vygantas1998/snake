@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
+using ServerApp.Objects.Mediator;
 using Snake;
 using Snake.Objects;
 using Snake.Objects.Levels;
@@ -54,6 +55,7 @@ namespace ServerApp
     class SnakeServer
     {
         List<Socket> clients = new List<Socket>();
+        Mediator mediator = new Mediator();
         IPAddress[] allIps = Array.FindAll(Dns.GetHostEntry(string.Empty).AddressList, a => a.AddressFamily == AddressFamily.InterNetwork);
         int Port = 3000;
         Socket listener = new Socket(AddressFamily.InterNetwork,
@@ -94,7 +96,8 @@ namespace ServerApp
             Socket clientSocket = listener.Accept();
             MapObserver mapObserver = new MapObserver(clientSocket, map);
             mapObservable.Register(mapObserver);
-
+            Collegue me = new Collegue(snakeId.ToString(), clientSocket);
+            mediator.Register(me);
             clients.Add(clientSocket);
 
             Thread t = new Thread(new ThreadStart(() => WaitForMessage(listener)));
@@ -104,7 +107,8 @@ namespace ServerApp
             server["serverAddress"] = clientSocket.LocalEndPoint.ToString();
             server["snakeId"] = snakeId++;
             SendClientMessage(clientSocket, server.ToString());
-            Console.WriteLine(String.Format("ClientConnected -> {0}", clientSocket.RemoteEndPoint));
+
+            Console.WriteLine(String.Format("ClientConnected -> snakeId: {0}, ip: {1}",snakeId - 1, clientSocket.RemoteEndPoint));
 
             byte[] bytes = new Byte[1024];
 
@@ -134,9 +138,13 @@ namespace ServerApp
                     }
                     if (dataPairs.ContainsKey("sayCommand"))
                     {
+                        mediator.Send(me.Name, dataPairs["sayCommand"]["to"].ToString(), dataPairs["sayCommand"]["msg"].ToString());
                         Console.WriteLine(dataPairs["sayCommand"]);
                     }
-                    ProcessData(dataPairs);
+                    else
+                    {
+                        ProcessData(dataPairs);
+                    }
                 }
                 catch (Exception e)
                 {
